@@ -9,7 +9,7 @@ namespace DAL.ConexionDB
 {
     public class Conexion
     {
-        public string ObtenerConexion()
+        public static string ObtenerConexion()
         {
             string con = ConfigurationManager.ConnectionStrings["connDb"].ConnectionString;
             if (string.ReferenceEquals(con, string.Empty))
