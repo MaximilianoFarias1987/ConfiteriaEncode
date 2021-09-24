@@ -192,6 +192,24 @@ namespace DAL
         }
 
 
+        //METODO CARGAR OBJETO TIPO DOC
+        public static TipoDocumento CrearObjetoTipo(SqlDataReader dr)
+        {
+            var t = new TipoDocumento();
+            if (dr["idTipoDoc"].ToString() != null)
+            {
+                t.IdTipoDocumento = (int)dr["idTipoDoc"];
+            }
+            if (dr["descripcion"].ToString() != null)
+            {
+                t.Descripcion = dr["descripcion"].ToString();
+            }
+            
+
+            return t;
+        }
+
+
         //OBTENER USUARIO ID
 
         public static Usuario ObtenerUsuarioID(Usuario u)
@@ -261,6 +279,48 @@ namespace DAL
                 con.Close();
                 return lst;
                 
+            }
+            catch (Exception)
+            {
+                //Conexion.BeginTransaction();
+                throw new Exception("Ha ocurrido un error");
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+
+
+        //OBTENER Tipos Documento
+        public static List<TipoDocumento> ObtenerTipoDoc()
+        {
+
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            List<TipoDocumento> lst = new List<TipoDocumento>();
+            TipoDocumento t = null;
+            try
+            {
+                string query = "select * from TipoDocumentos";
+                con.ConnectionString = Conexion.ObtenerConexion();
+                con.Open();
+                cmd.Connection = con;
+                //cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = query;
+                SqlDataReader dr = cmd.ExecuteReader();
+                lst.Clear();
+
+                while (dr.Read())
+                {
+                    t = CrearObjetoTipo(dr);
+                    lst.Add(t);
+                }
+                con.Close();
+                return lst;
+
             }
             catch (Exception)
             {

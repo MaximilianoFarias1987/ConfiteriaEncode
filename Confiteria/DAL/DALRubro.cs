@@ -201,17 +201,17 @@ namespace DAL
 
         //continuar refactorizando desde aca
 
-        //OBTENER Articulos
-        public static List<Local> ObtenerLocales()
+        //OBTENER Rubros
+        public static List<Rubro> ObtenerRubro()
         {
 
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            List<Local> lst = new List<Local>();
-            Local l = null;
+            List<Rubro> lst = new List<Rubro>();
+            Rubro r = null;
             try
             {
-                string nombreSP = "sp_ObtenerLocales";
+                string nombreSP = "sp_ObtenerRubros";
                 con.ConnectionString = Conexion.ObtenerConexion();
                 con.Open();
                 cmd.Connection = con;
@@ -222,8 +222,8 @@ namespace DAL
 
                 while (dr.Read())
                 {
-                    l = CrearObjeto(dr);
-                    lst.Add(l);
+                    r = CrearObjeto(dr);
+                    lst.Add(r);
                 }
                 con.Close();
                 return lst;
@@ -242,16 +242,16 @@ namespace DAL
 
 
 
-        //VALIDAR Articulo
+        //VALIDAR Rubro
 
-        public static bool ValidarLocalUnico(string cuit, string direccion)
+        public static bool ValidarLocalUnico(string descripcion)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
 
             try
             {
-                string query = string.Format("select Count(*) from Locales where cuit = '{0}' or direccion = '{1}'", cuit, direccion);
+                string query = string.Format("select Count(*) from Rubro where descripcion = '{0}'", descripcion);
                 con.ConnectionString = Conexion.ObtenerConexion();
                 cmd.Connection = con;
                 cmd.CommandText = query;
@@ -273,5 +273,7 @@ namespace DAL
                 return false;
             }
         }
+
+
     }
 }

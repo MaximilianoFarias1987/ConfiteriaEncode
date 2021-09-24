@@ -1,0 +1,9 @@
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\bin\Debug\DAL.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\bin\Debug\DAL.pdb
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\bin\Debug\Entidades.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\bin\Debug\Entidades.pdb
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.pdb

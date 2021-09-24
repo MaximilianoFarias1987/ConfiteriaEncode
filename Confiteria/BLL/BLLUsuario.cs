@@ -44,6 +44,12 @@ namespace BLL
             return DALUsuario.ObtenerUsuarios();
         }
 
+        //OBTENER TIPO DOCUMENTO
+        public static List<TipoDocumento> ObtenerTipoDoc()
+        {
+            return DALUsuario.ObtenerTipoDoc();
+        }
+
 
         //VALIDAR NOMBRE USUARIO
         public static bool ValidarUsuarioUnico(string nombreUsuario, int tipoDoc, string numDoc)

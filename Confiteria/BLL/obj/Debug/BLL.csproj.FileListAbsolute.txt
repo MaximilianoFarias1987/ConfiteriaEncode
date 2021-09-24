@@ -1,0 +1,11 @@
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\bin\Debug\BLL.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\bin\Debug\BLL.pdb
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\bin\Debug\DAL.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\bin\Debug\Entidades.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\bin\Debug\DAL.pdb
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\bin\Debug\Entidades.pdb
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.pdb
