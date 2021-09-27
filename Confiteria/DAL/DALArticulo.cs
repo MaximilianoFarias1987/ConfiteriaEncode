@@ -21,7 +21,7 @@ namespace DAL
 
             try
             {
-                string nombreSP = "sp_InsertarArticulo";
+                string nombreSP = "sp_InsertaArticulo";
                 con.ConnectionString = Conexion.ObtenerConexion();
                 con.Open();
                 cmd.Connection = con;
@@ -46,10 +46,11 @@ namespace DAL
                     return false;
                 }
             }
-            catch (Exception)
+            catch (SqlException e)
             {
                 //Conexion.BeginTransaction();
-                return false;
+                //return false;
+                throw new Exception(e.Message);
             }
             finally
             {
@@ -106,7 +107,7 @@ namespace DAL
 
 
         //ELIMINAR ARTICULO
-        public static bool EliminarArticulo(Articulo a)
+        public static bool EliminarArticulo(int id)
         {
 
             SqlConnection con = new SqlConnection();
@@ -120,7 +121,7 @@ namespace DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = nombreSP;
-                cmd.Parameters.AddWithValue("@idArticulo", a.IdArticulo);
+                cmd.Parameters.AddWithValue("@idArticulo", id);
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
                 //Conexion.Cmd.Transaction = Conexion.transaction;
@@ -288,6 +289,35 @@ namespace DAL
             {
                 con.Close();
                 return false;
+            }
+        }
+
+        //OBTENER TIPOS DE DOCUMENTOS PARA CARGAR COMBO
+        public static DataTable ObtenerRubro()
+        {
+
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            DataTable tabla = new DataTable();
+            try
+            {
+                string query = "select * from Rubro";
+                con.ConnectionString = Conexion.ObtenerConexion();
+                cmd.Connection = con;
+                cmd.CommandText = query;
+                con.Open();
+                tabla.Load(cmd.ExecuteReader());
+                return tabla;
+
+            }
+            catch (Exception e)
+            {
+                //Conexion.BeginTransaction();
+                throw new Exception("Ha ocurrido un error " + e);
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

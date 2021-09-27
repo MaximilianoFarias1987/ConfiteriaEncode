@@ -145,7 +145,7 @@ namespace Confiteria
             var id = HdIDUsuario.Value;
             if (ActualizarUsuario(Convert.ToInt32(id),txtNombreActualizar.Text, txtApellidoAct.Text, Convert.ToInt32(cboTipoDocAct.Text), txtDocAct.Text, txtNombreUsuarioAct.Text, txtPasswordAct.Text, Convert.ToInt32(cboRolAct.Text)))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
                 txtNombreActualizar.Text = string.Empty;
                 txtApellidoAct.Text = string.Empty;
                 cboTipoDocAct.SelectedIndex = 0;
@@ -156,7 +156,7 @@ namespace Confiteria
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
             }
         }
 
@@ -166,11 +166,11 @@ namespace Confiteria
 
             if (BLLUsuario.EliminarUsuario(Convert.ToInt32(id)))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeEliminarOk();", true);
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorEliminar();", true);
             }
         }
     }

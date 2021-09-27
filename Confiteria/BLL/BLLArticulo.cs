@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,9 @@ namespace BLL
 
 
         //ELIMINAR ARTICULO
-        public static bool EliminarArticulo(Articulo a)
+        public static bool EliminarArticulo(int id)
         {
-            return DALArticulo.EliminarArticulo(a);
+            return DALArticulo.EliminarArticulo(id);
         }
 
 
@@ -51,6 +52,12 @@ namespace BLL
         public static bool ValidarArticuloUnico(string descripcion, int idRubro)
         {
             return DALArticulo.ValidarArticuloUnico(descripcion,idRubro);
+        }
+
+
+        public static DataTable ObtenerRubro()
+        {
+            return DALArticulo.ObtenerRubro();
         }
     }
 }

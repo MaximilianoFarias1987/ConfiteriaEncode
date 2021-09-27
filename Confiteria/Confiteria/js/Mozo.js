@@ -4,7 +4,7 @@
 var tabla, data;
 
 function addRowDT(data) {
-    tabla = $("#tblUsuarios").dataTable();
+    tabla = $("#tblMozos").dataTable();
     //tabla.fnClearTable();
     for (var i = 0; i <= data.length; i++) {
         tabla.fnAddData([
@@ -13,9 +13,11 @@ function addRowDT(data) {
             data[i].Apellido,
             data[i].IdTipoDoc,
             data[i].NumeroDoc,
-            data[i].NombreUsuario,
-            data[i].Password,
-            data[i].IdRol,
+            data[i].Email,
+            data[i].Telefono,
+            data[i].Direccion,
+            data[i].PorComision,
+            data[i].FechaIngreso,
             '<button type="button" value="Actualizar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalActualizar()" id="btnAbrirModalEdit"><i class="fa fa-pencil" aria-hidden="true"></i></button><button type="button" id="eliminar" value="Eliminar" class="btn btn-danger ml-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalEliminar()"><i class="fa fa-trash" aria-hidden="true"></i></button>'
 
         ])
@@ -25,7 +27,7 @@ function addRowDT(data) {
 function sendDataAjax() {
     $.ajax({
         type: "POST",
-        url: "Usuarios.aspx/listaUsuarios",
+        url: "Mozos.aspx/listaMozos",
         data: '{}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -50,14 +52,16 @@ $(document).on('click', '#btnAbrirModalEdit', function (e) {
 
 //CAGAR DATOS EN EL MODAL ACTUALIZAR
 function fillModalData() {
-    $("#HdIDUsuario").val(data[0]);
-    $("#txtNombreActualizar").val(data[1]);
+    $("#HdIDMozo").val(data[0]);
+    $("#txtNombreAct").val(data[1]);
     $("#txtApellidoAct").val(data[2]);
     $("#cboTipoDocAct").val(data[3]);
-    $("#txtDocAct").val(data[4]);
-    $("#txtNombreUsuarioAct").val(data[5]);
-    $("#txtPasswordAct").val(data[6]);
-    $("#cboRolAct").val(data[7]);
+    $("#txtDocumentoAct").val(data[4]);
+    $("#txtEmailAct").val(data[5]);
+    $("#txtTelefonoAct").val(data[6]);
+    $("#txtDireccionAct").val(data[7]);
+    $("#txtComisionAct").val(data[8]);
+    $("#txtFechaIngresoAct").val(data[9]);
 
 }
 
@@ -70,7 +74,7 @@ $(document).on('click', '#eliminar', function (e) {
 });
 
 function fillModalDataEliminar() {
-    $("#hdIdUsuarioElim").val(data[0]);
+    $("#hdIdMozoElim").val(data[0]);
 }
 
 
@@ -108,34 +112,34 @@ function cerrarModalRegistrar() {
 
 
 function MensajeErrorValidacion() {
-    swal("Error", "Ya existe un usuario con esos datos", "error");
+    swal("Error", "Ya existe un Mozo registrado con esos datos", "error");
 }
 
 
 
 //MENSAJE REGISTRO
 function MensajeSuccess() {
-    swal("Muy Bien!", "Usuario registrado con exito", "success");
+    swal("Muy Bien!", "Mozo registrado con exito", "success");
 }
 
 function MensajeError() {
-    swal("Error", "No se pudo registrar el Usuario", "error");
+    swal("Error", "No se pudo registrar el Mozo", "error");
 }
 
 //MENSAJE ELIMINAR
 function MensajeEliminarOk() {
-    swal("Muy Bien!", "Usuario eliminado con exito", "success");
+    swal("Muy Bien!", "Mozo eliminado con exito", "success");
 }
 
 function MensajeErrorEliminar() {
-    swal("Error", "No se pudo eliminar el Usuario", "error");
+    swal("Error", "No se pudo eliminar el Mozo", "error");
 }
 
 //MENSAJE ACTUALIZAR
 function MensajeActualizrOk() {
-    swal("Muy Bien!", "Usuario actualizado con exito", "success");
+    swal("Muy Bien!", "Mozo actualizado con exito", "success");
 }
 
 function MensajeErrorActualizar() {
-    swal("Error", "No se pudo actualizar el Usuario", "error");
+    swal("Error", "No se pudo actualizar el Mozo", "error");
 }

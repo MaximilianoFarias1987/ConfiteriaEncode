@@ -77,9 +77,11 @@
     <Content Include="css\style.css" />
     <Content Include="GenerarTicket.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="js\Articulo.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main.js" />
+    <Content Include="js\Mozo.js" />
     <Content Include="js\popper.js" />
     <Content Include="js\Usuario.js" />
     <Content Include="Local.aspx" />

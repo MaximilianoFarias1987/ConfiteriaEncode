@@ -35,7 +35,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@telefono", m.Telefono);
                 cmd.Parameters.AddWithValue("@direccion", m.Direccion);
                 cmd.Parameters.AddWithValue("@porComision", m.PorComision);
-                cmd.Parameters.AddWithValue("@fechaIngreso", DateTime.Now);
+                cmd.Parameters.AddWithValue("@fechaIngreso", DateTime.Today);
 
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
@@ -117,7 +117,7 @@ namespace DAL
 
 
         //ELIMINAR MOZO
-        public static bool EliminarMozo(Mozo m)
+        public static bool EliminarMozo(int id)
         {
 
             SqlConnection con = new SqlConnection();
@@ -131,7 +131,7 @@ namespace DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = nombreSP;
-                cmd.Parameters.AddWithValue("@idMozo", m.Id);
+                cmd.Parameters.AddWithValue("@idMozo", id);
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
                 //Conexion.Cmd.Transaction = Conexion.transaction;

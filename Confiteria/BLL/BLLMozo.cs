@@ -25,9 +25,9 @@ namespace BLL
 
 
         //ELIMINAR MOZO
-        public static bool EliminarMozo(Mozo m)
+        public static bool EliminarMozo(int id)
         {
-            return DALMozo.EliminarMozo(m);
+            return DALMozo.EliminarMozo(id);
         }
 
 
