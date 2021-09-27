@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Usuarios</h1>
+    <%--<h3>Usuarios</h3>--%>
     <div class="container">
         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalRegistrar" onclick="abrirModalRegistrar()" id="btnAbrirModalRegistrar"><span class="fa fa-user"></span> Registrar Usuario</button>
     </div>
@@ -31,6 +31,7 @@
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
                                 <th>Rol</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -43,6 +44,7 @@
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
                                 <th>Rol</th>
+                                <th>Acciones</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -69,7 +71,7 @@
                 <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>--%>
                 <div class="modal-body">
-                    <asp:HiddenField ID="HdIDUsuario" runat="server" />
+                    <%--<asp:HiddenField ID="HdIDUsuario" runat="server" />--%>
                     
                     <div class="row">
                         <div class="col">
@@ -81,12 +83,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:DropDownList runat="server" ID="cboTipoDoc" CssClass="form-control">
-                            <asp:ListItem Text="Seleccione un tipo de documento..." />
-                            <asp:ListItem Text="DNI" />
-                            <asp:ListItem Text="LC" />
-                            <asp:ListItem Text="PASAPORTE" />
-                        </asp:DropDownList> 
+                            <asp:DropDownList runat="server" ID="cboTipoDoc" CssClass="form-control"></asp:DropDownList> 
                         </div>
                         <div class="col">
                             <asp:TextBox runat="server" ID="txtNumDocumento" CssClass="form-control" placeholder="Numero Documento" />
@@ -102,11 +99,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:DropDownList runat="server" ID="cboRol" CssClass="form-control">
-                            <asp:ListItem Text="Seleccione un Rol de Usuario..." />
-                            <asp:ListItem Text="ADMINISTRADOR" />
-                            <asp:ListItem Text="CAJERO" />
-                        </asp:DropDownList> 
+                            <asp:DropDownList runat="server" ID="cboRol" CssClass="form-control"></asp:DropDownList> 
                         </div>
                         
                     </div>
@@ -115,10 +108,8 @@
 
                      <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnRegistrar_Click" />
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalActualizar()">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalRegistrar()">Cerrar</button>
                 </div>
-                <%--</ContentTemplate>--%>
-                <%--                </asp:UpdatePanel>--%>
             </div>
         </div>
     </div>
@@ -134,29 +125,52 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-               
-               <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>--%>
-                        <div class="modal-body">
-                            <asp:HiddenField ID="idProcedencia" runat="server" />
-                            <label>Nombre de Institucion</label>
-                            <asp:TextBox ID="txtNombreActualizar" runat="server" CssClass="form-control" type="text"/>
+                <div class="modal-body">
+                    <asp:HiddenField ID="HdIDUsuario" runat="server" />
+                    
+                    <div class="row">
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtNombreActualizar" CssClass="form-control" placeholder="Nombre" /> 
                         </div>
-                        <div class="modal-footer">
-
-                           <%-- <asp:Button ID="btnActualizar" Text="Actualizar" CssClass="btn btn-secondary" data-bs-dismiss="modal" runat="server" OnClick="btnActualizar_Click" />--%>
-                            
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalActualizar()">Cerrar</button>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtApellidoAct" CssClass="form-control" placeholder="Apellido" />
                         </div>
-                    <%--</ContentTemplate>--%>
-<%--                </asp:UpdatePanel>--%>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <asp:DropDownList runat="server" ID="cboTipoDocAct" CssClass="form-control"></asp:DropDownList> 
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtDocAct" CssClass="form-control" placeholder="Numero Documento" />
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtNombreUsuarioAct" CssClass="form-control" placeholder="Nombre Usuario" /> 
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtPasswordAct" CssClass="form-control" placeholder="Contraseña" type="password" />
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <asp:DropDownList runat="server" ID="cboRolAct" CssClass="form-control"></asp:DropDownList> 
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
 
+                     <asp:Button ID="btnActualizar" Text="Actualizar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnActualizar_Click" />
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalActualizar()">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Modal Eliminar -->
-    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+    <div class="modal fade" id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -165,15 +179,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
-                <%--<asp:Upda<%--tePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>--%>--%>
                         <div class="modal-body">
-                            <asp:HiddenField ID="idProcedenciaEliminar" runat="server" />
-                            <label>¿Esta seguro de Eliminar el registro?</label>
+                            <asp:HiddenField ID="hdIdUsuarioElim" runat="server" />
+                            <label>¿Esta seguro de Eliminar el Usuario?</label>
                         </div>
                         <div class="modal-footer">
-                            <%--<asp:Button Text="Eliminar" CssClass="btn btn-primary" runat="server" ID="btnEliminar" OnClick="btnEliminar_Click1" />--%>
+                            <asp:Button Text="Eliminar" CssClass="btn btn-primary" runat="server" ID="btnEliminar" OnClick="btnEliminar_Click" />
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalEliminar()">Cerrar</button>
                         </div>
                    <%-- </ContentTemplate>

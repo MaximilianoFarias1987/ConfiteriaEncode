@@ -109,7 +109,7 @@ namespace DAL
 
 
         //OBTENER USUARIOS
-        public static bool EliminarUsuario(Usuario u)
+        public static bool EliminarUsuario(int id)
         {
 
             SqlConnection con = new SqlConnection();
@@ -123,7 +123,7 @@ namespace DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = nombreSP;
-                cmd.Parameters.AddWithValue("@idUsuario", u.Id);
+                cmd.Parameters.AddWithValue("@idUsuario", id);
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
                 //Conexion.Cmd.Transaction = Conexion.transaction;
@@ -139,10 +139,11 @@ namespace DAL
                     return false;
                 }
             }
-            catch (Exception)
+            catch (SqlException e)
             {
                 //Conexion.BeginTransaction();
-                return false;
+                throw new Exception(e.Message);
+                //return false;
             }
             finally
             {
@@ -294,38 +295,61 @@ namespace DAL
 
 
 
-        //OBTENER Tipos Documento
-        public static List<TipoDocumento> ObtenerTipoDoc()
+        
+
+
+        //OBTENER TIPOS DE DOCUMENTOS PARA CARGAR COMBO
+        public static DataTable ObtenerTipoDocumento()
         {
 
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            List<TipoDocumento> lst = new List<TipoDocumento>();
-            TipoDocumento t = null;
+            DataTable tabla = new DataTable();
             try
             {
                 string query = "select * from TipoDocumentos";
                 con.ConnectionString = Conexion.ObtenerConexion();
-                con.Open();
                 cmd.Connection = con;
-                //cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = query;
-                SqlDataReader dr = cmd.ExecuteReader();
-                lst.Clear();
-
-                while (dr.Read())
-                {
-                    t = CrearObjetoTipo(dr);
-                    lst.Add(t);
-                }
-                con.Close();
-                return lst;
+                con.Open();
+                tabla.Load(cmd.ExecuteReader());
+                return tabla;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Conexion.BeginTransaction();
-                throw new Exception("Ha ocurrido un error");
+                throw new Exception("Ha ocurrido un error " + e);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+        //OBTENER ROLES PARA CARGAR COMBO
+        public static DataTable ObtenerRoles()
+        {
+
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            DataTable tabla = new DataTable();
+            try
+            {
+                string query = "select * from Roles";
+                con.ConnectionString = Conexion.ObtenerConexion();
+                cmd.Connection = con;
+                cmd.CommandText = query;
+                con.Open();
+                tabla.Load(cmd.ExecuteReader());
+                return tabla;
+
+            }
+            catch (Exception e)
+            {
+                //Conexion.BeginTransaction();
+                throw new Exception("Ha ocurrido un error " + e);
             }
             finally
             {

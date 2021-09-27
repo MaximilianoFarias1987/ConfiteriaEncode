@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,9 @@ namespace BLL
 
 
         //OBTENER USUARIOS
-        public static bool EliminarUsuario(Usuario u)
+        public static bool EliminarUsuario(int id)
         {
-            return DALUsuario.EliminarUsuario(u);
+            return DALUsuario.EliminarUsuario(id);
         }
 
 
@@ -44,17 +45,25 @@ namespace BLL
             return DALUsuario.ObtenerUsuarios();
         }
 
-        //OBTENER TIPO DOCUMENTO
-        public static List<TipoDocumento> ObtenerTipoDoc()
-        {
-            return DALUsuario.ObtenerTipoDoc();
-        }
-
-
+        
         //VALIDAR NOMBRE USUARIO
         public static bool ValidarUsuarioUnico(string nombreUsuario, int tipoDoc, string numDoc)
         {
             return DALUsuario.ValidarUsuarioUnico(nombreUsuario,tipoDoc,numDoc);
+        }
+
+
+        //OBTENER TIPO DOCUMENTO CON DATATABLE
+        public static DataTable ObtenerTipoDocumento()
+        {
+            return DALUsuario.ObtenerTipoDocumento();
+        }
+
+
+        //OBTENER ROLES CON DATATABLE
+        public static DataTable ObtenerRoles()
+        {
+            return DALUsuario.ObtenerRoles();
         }
     }
 }

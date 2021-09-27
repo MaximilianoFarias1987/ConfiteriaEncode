@@ -9,3 +9,14 @@ C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.CoreCompileIn
 C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.dll
 C:\GitProject\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\bin\Debug\BLL.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\bin\Debug\BLL.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\bin\Debug\DAL.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\bin\Debug\Entidades.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\bin\Debug\DAL.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\bin\Debug\Entidades.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\BLL\obj\Debug\BLL.pdb

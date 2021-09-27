@@ -4,3 +4,9 @@ C:\GitProject\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.csproj.A
 C:\GitProject\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\GitProject\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.dll
 C:\GitProject\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\bin\Debug\Entidades.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\bin\Debug\Entidades.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.pdb

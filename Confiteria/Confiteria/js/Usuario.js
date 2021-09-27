@@ -16,7 +16,7 @@ function addRowDT(data) {
             data[i].NombreUsuario,
             data[i].Password,
             data[i].IdRol,
-            '<button type="button" value="Actualizar" class="btn btn-primary" style="width:120px" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalActualizar()" id="btnAbrirModalEdit">Actualizar</button><button type="button" id="eliminar" value="Eliminar" class="btn btn-danger ml-1" style="width:120px" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalEliminar()">Eliminar</button>'
+            '<button type="button" value="Actualizar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalActualizar()" id="btnAbrirModalEdit"><i class="fa fa-pencil" aria-hidden="true"></i></button><button type="button" id="eliminar" value="Eliminar" class="btn btn-danger ml-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalEliminar()"><i class="fa fa-trash" aria-hidden="true"></i></button>'
 
         ])
     }
@@ -48,10 +48,17 @@ $(document).on('click', '#btnAbrirModalEdit', function (e) {
 
 });
 
-//CAGAR DATOS EN EL MODAL
+//CAGAR DATOS EN EL MODAL ACTUALIZAR
 function fillModalData() {
-    $("#idProcedencia").val(data[0]);
+    $("#HdIDUsuario").val(data[0]);
     $("#txtNombreActualizar").val(data[1]);
+    $("#txtApellidoAct").val(data[2]);
+    $("#cboTipoDocAct").val(data[3]);
+    $("#txtDocAct").val(data[4]);
+    $("#txtNombreUsuarioAct").val(data[5]);
+    $("#txtPasswordAct").val(data[6]);
+    $("#cboRolAct").val(data[7]);
+
 }
 
 $(document).on('click', '#eliminar', function (e) {
@@ -63,18 +70,18 @@ $(document).on('click', '#eliminar', function (e) {
 });
 
 function fillModalDataEliminar() {
-    $("#idProcedenciaEliminar").val(data[0]);
+    $("#hdIdUsuarioElim").val(data[0]);
 }
 
 
 //Cerrar Modal Eliminar
 function cerrarModalEliminar() {
-    $('#staticBackdrop2').modal('hide');
+    $('#modalEliminar').modal('hide');
 }
 
 //Abrir modal Eliminar
 function abrirModalEliminar() {
-    $('#staticBackdrop2').modal('show');
+    $('#modalEliminar').modal('show');
 }
 
 //Cerrar Modal Actualizar
@@ -95,7 +102,7 @@ function abrirModalRegistrar() {
 
 
 //Cerrar Modal Registrar
-function cerrarModalActualizar() {
+function cerrarModalRegistrar() {
     $('#modalRegistrar').modal('hide');
 }
 

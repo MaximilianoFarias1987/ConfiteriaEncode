@@ -7,3 +7,12 @@ C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.CoreCompileIn
 C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.dll
 C:\GitProject\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\bin\Debug\DAL.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\bin\Debug\DAL.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\bin\Debug\Entidades.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\bin\Debug\Entidades.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\DAL\obj\Debug\DAL.pdb
