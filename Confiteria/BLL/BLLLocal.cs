@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,9 @@ namespace BLL
 
 
         //ELIMINAR LOCAL
-        public static bool EliminarLocal(Local l)
+        public static bool EliminarLocal(int id)
         {
-            return DALLocal.EliminarLocal(l);
+            return DALLocal.EliminarLocal(id);
         }
 
 
@@ -52,5 +53,12 @@ namespace BLL
         {
             return DALLocal.ValidarLocalUnico(cuit, direccion);
         }
+
+
+        public static DataTable ObtenerTipoIva()
+        {
+            return DALLocal.ObtenerTipoIva();
+        }
+
     }
 }

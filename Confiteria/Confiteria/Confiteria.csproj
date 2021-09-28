@@ -80,6 +80,7 @@
     <Content Include="js\Articulo.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\Local.js" />
     <Content Include="js\main.js" />
     <Content Include="js\Mozo.js" />
     <Content Include="js\popper.js" />

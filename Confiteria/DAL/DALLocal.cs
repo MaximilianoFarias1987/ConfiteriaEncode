@@ -108,7 +108,7 @@ namespace DAL
 
 
         //ELIMINAR LOCAL
-        public static bool EliminarLocal(Local l)
+        public static bool EliminarLocal(int id)
         {
 
             SqlConnection con = new SqlConnection();
@@ -122,7 +122,7 @@ namespace DAL
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = nombreSP;
-                cmd.Parameters.AddWithValue("@idLocal", l.IdLocal);
+                cmd.Parameters.AddWithValue("@idLocal", id);
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
                 //Conexion.Cmd.Transaction = Conexion.transaction;
@@ -176,7 +176,7 @@ namespace DAL
             }
             if (dr["ingBruto"].ToString() != null)
             {
-                x.IngBruto = (int)dr["ingBruto"];
+                x.IngBruto = (double)dr["ingBruto"];
             }
             return x;
         }
@@ -252,10 +252,10 @@ namespace DAL
                 return lst;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Conexion.BeginTransaction();
-                throw new Exception("Ha ocurrido un error");
+                throw new Exception("Ha ocurrido un error " + e);
             }
             finally
             {
@@ -294,6 +294,37 @@ namespace DAL
             {
                 con.Close();
                 return false;
+            }
+        }
+
+
+
+        //OBTENER TIPOS DE IVA PARA CARGAR COMBO
+        public static DataTable ObtenerTipoIva()
+        {
+
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            DataTable tabla = new DataTable();
+            try
+            {
+                string query = "select * from TiposIva";
+                con.ConnectionString = Conexion.ObtenerConexion();
+                cmd.Connection = con;
+                cmd.CommandText = query;
+                con.Open();
+                tabla.Load(cmd.ExecuteReader());
+                return tabla;
+
+            }
+            catch (Exception e)
+            {
+                //Conexion.BeginTransaction();
+                throw new Exception("Ha ocurrido un error " + e);
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

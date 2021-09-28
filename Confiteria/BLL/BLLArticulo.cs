@@ -59,5 +59,10 @@ namespace BLL
         {
             return DALArticulo.ObtenerRubro();
         }
+
+        public static double ObtenerPrecio(int id)
+        {
+            return DALArticulo.ObtenerPrecio(id);
+        }
     }
 }

@@ -320,5 +320,48 @@ namespace DAL
                 con.Close();
             }
         }
+
+
+        public static double ObtenerPrecio(int id)
+        {
+
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            Articulo obj = null;
+            try
+            {
+                double precio = 0;
+                string query = string.Format("select precio from Articulos where idArticulo = {0}", id);
+                con.ConnectionString = Conexion.ObtenerConexion();
+                con.Open();
+                cmd.Connection = con;
+                cmd.CommandText = query;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    if (dr["precio"].ToString() != null)
+                    {
+                        precio = (double)dr["precio"];
+                    }
+                }
+                con.Close();
+                return precio;
+
+            }
+            catch (Exception)
+            {
+                //Conexion.BeginTransaction();
+                throw new Exception("Ha ocurrido un error");
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+
+        
     }
 }
