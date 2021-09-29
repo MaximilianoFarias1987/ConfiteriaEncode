@@ -9,7 +9,12 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <asp:DropDownList runat="server" ID="cboArticulos" CssClass="form-control" OnSelectedIndexChanged="cboArticulos_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+            <asp:DropDownList runat="server" ID="cboArticulos" CssClass="form-control" OnSelectedIndexChanged="cboArticulos_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+                
             </div>
 
             <div class="col">
@@ -40,6 +45,8 @@
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <asp:GridView ID="gvCarrito" runat="server"></asp:GridView>
+                <asp:Table ID="tblCarro" runat="server" Width="82px">
+                </asp:Table>
             </ContentTemplate>
         </asp:UpdatePanel>
 
