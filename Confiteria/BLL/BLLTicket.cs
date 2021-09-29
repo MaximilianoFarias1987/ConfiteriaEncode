@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,17 @@ namespace BLL
         public static DataTable ObtenerArticulos()
         {
             return DALTicket.ObtenerArticulos();
+        }
+
+        public static int InsertarTicket(Ticket t)
+        {
+            return DALTicket.InsertarTicket(t);
+        }
+
+
+        public static bool InsertarDetalleTicket(TicketDetalle td)
+        {
+            return DALTicket.InsertarDetalleTicket(td);
         }
     }
 }

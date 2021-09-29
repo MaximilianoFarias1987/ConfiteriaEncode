@@ -84,6 +84,7 @@
     <Content Include="js\main.js" />
     <Content Include="js\Mozo.js" />
     <Content Include="js\popper.js" />
+    <Content Include="js\Ticket.js" />
     <Content Include="js\Usuario.js" />
     <Content Include="Local.aspx" />
     <Content Include="Mozos.aspx" />
