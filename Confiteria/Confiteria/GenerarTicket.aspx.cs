@@ -53,6 +53,8 @@ namespace Confiteria
         protected void btnCargarTabla_Click(object sender, EventArgs e)
         {
 
+            btnGenerarTicket.Visible = true;
+
             double total = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(ViewState["precio"]);
 
             DataTable dt;
@@ -78,7 +80,9 @@ namespace Confiteria
 
             gvCarrito.DataSource = dt;
             gvCarrito.DataBind();
-            Session["datos"] = dt;  
+            Session["datos"] = dt;
+
+            
         }
 
 
@@ -178,7 +182,7 @@ namespace Confiteria
 
         protected void btnGenerarTicket_Click(object sender, EventArgs e)
         {
-            if (CrearTicket(1, 2, 1, 1))
+            if (CrearTicket(1, 3, 1, 1))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketSuccess();", true);
             }

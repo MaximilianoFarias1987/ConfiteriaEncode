@@ -10,7 +10,11 @@
         <div class="row">
             <div class="col">
                 <label>Articulo</label>
+                 <%--<asp:UpdatePanel runat="server">
+                    <ContentTemplate>--%>
                 <asp:DropDownList runat="server" ID="cboArticulos" CssClass="form-control" OnSelectedIndexChanged="cboArticulos_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                 <%-- </ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
 
             <div class="col">
@@ -22,11 +26,11 @@
 
         <div class="row mt-2">
             <div class="col">
-                <asp:UpdatePanel runat="server">
-                    <ContentTemplate>
+                <%--<asp:UpdatePanel runat="server">--%>
+                    <%--<ContentTemplate>--%>
                         <asp:Button ID="btnCargarTabla" Text="Agregar Articulo" CssClass="btn btn-primary float-right" runat="server" OnClick="btnCargarTabla_Click" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                   <%-- </ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
         </div>
 
@@ -46,7 +50,7 @@
             <div class="col">
                <%-- <asp:UpdatePanel runat="server">
                     <ContentTemplate>--%>
-                        <asp:Button ID="btnGenerarTicket" Text="Generar Ticket" CssClass="btn btn-primary float-right" runat="server" OnClick="btnGenerarTicket_Click" />
+                        <asp:Button ID="btnGenerarTicket" Text="Generar Ticket" CssClass="btn btn-primary float-right" runat="server" OnClick="btnGenerarTicket_Click" Visible="false" />
                    <%-- </ContentTemplate>
                 </asp:UpdatePanel>--%>
             </div>

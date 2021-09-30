@@ -327,7 +327,7 @@ namespace DAL
 
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            Articulo obj = null;
+            //Articulo obj = null;
             try
             {
                 double precio = 0;
