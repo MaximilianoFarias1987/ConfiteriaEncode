@@ -117,9 +117,9 @@ namespace Confiteria
                     td = new TicketDetalle
                     {
                         IdTicket = ticketId,
-                        IdArticulo = Convert.ToInt32(x.Cells[0]),
-                        Cantidad = Convert.ToInt32(x.Cells[1]),
-                        PreUnitario = Convert.ToDouble(x.Cells[2])
+                        IdArticulo = Convert.ToInt32(x.Cells[0].Text),
+                        Cantidad = Convert.ToInt32(x.Cells[1].Text),
+                        PreUnitario = Convert.ToDouble(x.Cells[2].Text)
                     };
 
                     BLLTicket.InsertarDetalleTicket(td);
@@ -178,7 +178,7 @@ namespace Confiteria
 
         protected void btnGenerarTicket_Click(object sender, EventArgs e)
         {
-            if (CrearTicket(1, 3, 1, 1))
+            if (CrearTicket(1, 2, 1, 1))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketSuccess();", true);
             }
