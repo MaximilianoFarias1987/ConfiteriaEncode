@@ -1,0 +1,9 @@
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Reportes.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Reportes.pdb
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Newtonsoft.Json.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Newtonsoft.Json.xml
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.csproj.AssemblyReference.cache
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.csproj.CoreCompileInputs.cache
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.csproj.CopyComplete
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.dll
+C:\GitProject\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.pdb

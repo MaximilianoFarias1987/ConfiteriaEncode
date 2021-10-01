@@ -2,11 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Generar Ticket</h1>
+    
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
     <div class="container">
+        <h3>Generar Ticket</h3>
         <div class="row">
             <div class="col">
                 <label>Articulo</label>
@@ -24,13 +25,22 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col">
+                <label>Fué atendido por</label>
+                <asp:DropDownList runat="server" ID="cboMozo" CssClass="form-control"></asp:DropDownList>
+            </div>
+
+            <div class="col">
+                <label>Forma de Pago</label>
+                <asp:DropDownList runat="server" ID="cboFormaPago" CssClass="form-control"></asp:DropDownList>
+
+            </div>
+        </div>
+
         <div class="row mt-2">
             <div class="col">
-                <%--<asp:UpdatePanel runat="server">--%>
-                    <%--<ContentTemplate>--%>
                         <asp:Button ID="btnCargarTabla" Text="Agregar Articulo" CssClass="btn btn-primary float-right" runat="server" OnClick="btnCargarTabla_Click" />
-                   <%-- </ContentTemplate>
-                </asp:UpdatePanel>--%>
             </div>
         </div>
 
@@ -48,12 +58,10 @@
 
         <div class="row mt-2">
             <div class="col">
-               <%-- <asp:UpdatePanel runat="server">
-                    <ContentTemplate>--%>
                         <asp:Button ID="btnGenerarTicket" Text="Generar Ticket" CssClass="btn btn-primary float-right" runat="server" OnClick="btnGenerarTicket_Click" Visible="false" />
-                   <%-- </ContentTemplate>
-                </asp:UpdatePanel>--%>
+                <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label>
             </div>
+            
         </div>
 
     </div>

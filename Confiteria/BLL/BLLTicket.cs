@@ -16,6 +16,16 @@ namespace BLL
             return DALTicket.ObtenerArticulos();
         }
 
+        public static DataTable ObtenerMozos()
+        {
+            return DALTicket.ObtenerMozos();
+        }
+
+        public static DataTable ObtenerFormasPago()
+        {
+            return DALTicket.ObtenerFormasPago();
+        }
+
         public static int InsertarTicket(Ticket t)
         {
             return DALTicket.InsertarTicket(t);

@@ -19,7 +19,9 @@ namespace Confiteria
         {
             if (!IsPostBack)
             {
-                CargarComboArticulo(); 
+                CargarComboArticulo();
+                CargarComboMozo();
+                CargarComboFormaPago();
             }
         }
 
@@ -31,6 +33,26 @@ namespace Confiteria
             cboArticulos.DataValueField = table.Columns[0].ColumnName;
             cboArticulos.DataBind();
             cboArticulos.Items.Insert(0, new ListItem("Seleccione un Articulo..."));
+        }
+
+        public void CargarComboMozo()
+        {
+            DataTable table = BLLTicket.ObtenerMozos();
+            cboMozo.DataSource = table;
+            cboMozo.DataTextField = table.Columns[1].ColumnName;
+            cboMozo.DataValueField = table.Columns[0].ColumnName;
+            cboMozo.DataBind();
+            cboMozo.Items.Insert(0, new ListItem("Seleccione un Mozo..."));
+        }
+
+        public void CargarComboFormaPago()
+        {
+            DataTable table = BLLTicket.ObtenerFormasPago();
+            cboFormaPago.DataSource = table;
+            cboFormaPago.DataTextField = table.Columns[1].ColumnName;
+            cboFormaPago.DataValueField = table.Columns[0].ColumnName;
+            cboFormaPago.DataBind();
+            cboFormaPago.Items.Insert(0, new ListItem("Seleccione una Forma Pago..."));
         }
 
         private void CargarTabla()
@@ -81,7 +103,10 @@ namespace Confiteria
             gvCarrito.DataSource = dt;
             gvCarrito.DataBind();
             Session["datos"] = dt;
-
+            double total2 = 0;
+            total2 = total2 + importe;
+            Session["total"] = total2;
+            lblTotal.Text = Session["total"].ToString();
             
         }
 
@@ -90,18 +115,7 @@ namespace Confiteria
         //METODO PARA GENERAR TICKET CON SU DETALLE
         private bool CrearTicket(int idLocal, int idUsuario, int idMozo, int idFormaPago )
         {
-            //Suscriptor suscriptor = new Suscriptor();
-            //suscriptor.Nombre = nombre;
-            //suscriptor.Apellido = apellido;
-            //suscriptor.Documento = numDoc;
-            //suscriptor.TipoDocumento = tipoDoc;
-            //suscriptor.Direccion = direccion;
-            //suscriptor.Telefono = tel;
-            //suscriptor.Email = email;
-            //suscriptor.NombreUsuario = user;
-            //suscriptor.Contrasena = pass;
-            //return BLL.BLLSuscriptor.Insertar(suscriptor);
-            //bool resultado = false;
+            
             try
             {
                 Ticket t = new Ticket
@@ -137,14 +151,7 @@ namespace Confiteria
             }
             
 
-            //if (t != null && td != null )
-            //{
-            //    resultado = true;
-            //}
-            //else
-            //{
-            //    resultado = false;
-            //}
+            
         }
 
 
@@ -182,7 +189,7 @@ namespace Confiteria
 
         protected void btnGenerarTicket_Click(object sender, EventArgs e)
         {
-            if (CrearTicket(1, 3, 1, 1))
+            if (CrearTicket(1, 3,Convert.ToInt32(cboMozo.Text),Convert.ToInt32(cboFormaPago.Text)))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketSuccess();", true);
             }
