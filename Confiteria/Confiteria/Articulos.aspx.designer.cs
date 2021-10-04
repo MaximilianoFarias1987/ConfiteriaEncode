@@ -24,6 +24,15 @@ namespace Confiteria
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
+        /// Control lblErrorDescripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorDescripcion;
+
+        /// <summary>
         /// Control txtPrecio.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace Confiteria
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrecio;
+
+        /// <summary>
+        /// Control lblErrorPrecio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorPrecio;
 
         /// <summary>
         /// Control txtStock.
@@ -42,6 +60,15 @@ namespace Confiteria
         protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
+        /// Control lblErrorStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorStock;
+
+        /// <summary>
         /// Control cboRubro.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace Confiteria
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cboRubro;
+
+        /// <summary>
+        /// Control lblErrorRubro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorRubro;
 
         /// <summary>
         /// Control btnRegistrar.

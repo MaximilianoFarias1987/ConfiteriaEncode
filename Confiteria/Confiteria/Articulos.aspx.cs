@@ -3,6 +3,7 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -19,6 +20,7 @@ namespace Confiteria
             {
                 CargarComboRubro();
                 CargarComboRubroAct();
+                
             }
         }
 
@@ -100,40 +102,127 @@ namespace Confiteria
             }
         }
 
+        private bool validacion()
+        {
+            if (txtDescripcion.Text == string.Empty )
+            {
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                txtDescripcion.Focus();
+                lblErrorDescripcion.Text = "Debe ingresar un Nombre de Articulo";
+                lblErrorDescripcion.ForeColor = Color.Red;
+                lblErrorDescripcion.Visible = true;
+                return false;
+            }
+            if (txtPrecio.Text == string.Empty)
+            {
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                txtPrecio.Focus();
+                lblErrorPrecio.Text = "Debe ingresar un Precio";
+                lblErrorPrecio.ForeColor = Color.Red;
+                lblErrorPrecio.Visible = true;
+                return false;
+            }
+            if (txtStock.Text == string.Empty)
+            {
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                txtStock.Focus();
+                lblErrorStock.Text = "Debe ingresar un Stock";
+                lblErrorStock.ForeColor = Color.Red;
+                lblErrorStock.Visible = true;
+                return false;
+            }
+            if (cboRubro.SelectedIndex < 1)
+            {
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                cboRubro.Focus();
+                lblErrorRubro.Text = "Debe seleccionar un Rubro";
+                lblErrorRubro.ForeColor = Color.Red;
+                lblErrorRubro.Visible = true;
+                return false;
+            }
+            lblErrorDescripcion.Visible = false;
+            lblErrorPrecio.Visible = false;
+            lblErrorStock.Visible = false;
+            lblErrorRubro.Visible = false;
+            return true;
+        }
+
+
+        private bool validacionActualizar()
+        {
+            if (txtDescripcionAct.Text == string.Empty)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                //txtDescripcionAct.Focus();
+                return false;
+            }
+            if (txtPrecioAct.Text == string.Empty)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                //txtPrecioAct.Focus();
+                return false;
+            }
+            if (txtStockAct.Text == string.Empty)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                //txtStockAct.Focus();
+                return false;
+            }
+            if (cboRubroAct.SelectedIndex < 1)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                cboRubroAct.Focus();
+                return false;
+            }
+            return true;
+        }
+
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (insertarArticulo(txtDescripcion.Text,Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtStock.Text), Convert.ToInt32(cboRubro.Text)))
+            if (validacion())
             {
+                if (insertarArticulo(txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(txtStock.Text), Convert.ToInt32(cboRubro.Text)))
+                {
 
-                txtDescripcion.Text = string.Empty;
-                txtPrecio.Text = string.Empty;
-                cboRubro.SelectedIndex = 0;
-                txtStock.Text = string.Empty;
-                //Response.Redirect("Mozos.aspx");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                    txtDescripcion.Text = string.Empty;
+                    txtPrecio.Text = string.Empty;
+                    cboRubro.SelectedIndex = 0;
+                    txtStock.Text = string.Empty;
+                    //Response.Redirect("Mozos.aspx");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                validacion();
             }
+
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             var id = HdIDArticulo.Value;
-            if (ActualizarArticulo(Convert.ToInt32(id), txtDescripcionAct.Text, Convert.ToDouble(txtPrecioAct.Text), Convert.ToInt32(txtStockAct.Text), Convert.ToInt32(cboRubroAct.Text)))
+            if (validacionActualizar())
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
-                txtDescripcion.Text = string.Empty;
-                txtPrecio.Text = string.Empty;
-                cboRubro.SelectedIndex = 0;
-                txtStock.Text = string.Empty;
+                if (ActualizarArticulo(Convert.ToInt32(id), txtDescripcionAct.Text, Convert.ToDouble(txtPrecioAct.Text), Convert.ToInt32(txtStockAct.Text), Convert.ToInt32(cboRubroAct.Text)))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
+                    txtDescripcion.Text = string.Empty;
+                    txtPrecio.Text = string.Empty;
+                    cboRubro.SelectedIndex = 0;
+                    txtStock.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                }
             }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
-            }
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

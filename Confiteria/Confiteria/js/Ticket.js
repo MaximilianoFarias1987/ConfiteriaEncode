@@ -11,3 +11,22 @@ function MensajeTicketSuccess() {
 function MensajeTicketError() {
     swal("Error", "Se ha producido un error", "error");
 }
+
+function printDiv(div) {
+    // Create and insert new print section
+    var elem = document.getElementById(div);
+    var domClone = elem.cloneNode(true);
+    var $printSection = document.createElement("div");
+    $printSection.id = "printSection";
+    $printSection.appendChild(domClone);
+    document.body.insertBefore($printSection, document.body.firstChild);
+    var master = document.getElementById("form1");
+    master.remove();
+    window.print();
+    window.location.href = "/GenerarTicket.aspx"
+    // Clean up print section for future use
+    var oldElem = document.getElementById("printSection");
+    if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); }
+    //oldElem.remove() not supported by IE
+    return true;
+}

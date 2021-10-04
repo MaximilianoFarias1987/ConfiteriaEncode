@@ -4,42 +4,54 @@
 
 <html lang="en">
   <head runat="server">
-  	<title>Confiteria Encode</title>
+  	<title>Sistema Encode || Encode.com.ar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     
+     <link rel="shortcut icon" href="imagesLogin/LoginImg.jpg"/>
 		<link rel="stylesheet" href="css/style.css">
        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
   </head>
   <body>
-		
+		<form id="form1" runat="server">
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="active">
-				<h1><a href="Home.aspx" class="logo">E.</a></h1>
+				<%--<h1><a href="Home.aspx" class="logo"></a></h1>--%>
+                <%--<img src="imagesLogin/LoginImg.jpg" alt="Alternate Text" style="height:60px; width:80px;" />--%>
         <ul class="list-unstyled components mb-5">
           <li class="active">
+              <img src="imagesLogin/LoginImg.jpg" alt="Alternate Text" style="height:60px; width:80px;" />
             <a href="Home.aspx"><span class="fa fa-home"></span> Home</a>
           </li>
           <li>
-              <a href="Usuarios.aspx"><span class="fa fa-user"></span> Usuarios</a>
+              <%--<a href="Usuarios.aspx"><span class="fa fa-user"></span> Usuarios</a>--%>
+              <asp:LinkButton ID="lnkUsuario" runat="server" PostBackUrl="~/Usuarios.aspx"><span class="fa fa-user"></span> Usuarios</asp:LinkButton>
           </li>
           <li>
-            <a href="Mozos.aspx"><span class="fa fa-user-circle" aria-hidden="true"></span> Mozos</a>
+            <%--<a href="Mozos.aspx"><span class="fa fa-user-circle" aria-hidden="true"></span> Mozos</a>--%>
+              <asp:LinkButton ID="lnkMozos" runat="server" PostBackUrl="~/Mozos.aspx"><span class="fa fa-user-circle" aria-hidden="true"></span> Mozos</asp:LinkButton>
           </li>
           <li>
-            <a href="Articulos.aspx"><span class="fa fa-coffee" aria-hidden="true"></span> Articulos</a>
+            <%--<a href="Articulos.aspx"><span class="fa fa-coffee" aria-hidden="true"></span> Articulos</a>--%>
+              <asp:LinkButton ID="lnkArticulos" runat="server" PostBackUrl="~/Articulos.aspx"><span class="fa fa-coffee" aria-hidden="true"></span> Articulos</asp:LinkButton>
           </li>
             <li>
-            <a href="Local.aspx"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Local</a>
+            <%--<a href="Local.aspx"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Local</a>--%>
+                <asp:LinkButton ID="lnkLocal" runat="server" PostBackUrl="~/Local.aspx"><span class="fa fa-shopping-cart" aria-hidden="true"></span> Local</asp:LinkButton>
           </li>
           <li>
-            <a href="GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</a>
+            <%--<a href="GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</a>--%>
+              <asp:LinkButton ID="lnkTicket" runat="server" PostBackUrl="~/GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</asp:LinkButton>
+          </li>
+            <li>
+            <%--<a href="GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</a>--%>
+              <%--<asp:Button Text="Cerrar Sesión" ID="btnSalir" runat="server" CssClass="btn btn-link" OnClick="btnSalir_Click">--%>
+                <asp:LinkButton ID="lnkSalir" runat="server" OnClick="lnkSalir_Click"><span class="fa fa-sign-out" aria-hidden="true"></span> Salir</asp:LinkButton>
           </li>
         </ul>
     	</nav>
@@ -63,29 +75,26 @@
                 <%--<li class="nav-item active">
                     <a class="nav-link" href="#">Home</a>
                 </li>--%>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Hola Maximiliano!</a>
-                </li>
-               <%-- <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio</a>
+                <li class="nav-item mr-3">
+                    <asp:Label Text="" ID="lblUsuarioSesion" runat="server" />
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>--%>
+                    <asp:Label ID="lblFecha" runat="server" Font-Bold="True" />
+                </li>
               </ul>
             </div>
           </div>
         </nav>
 
-        <form id="form1" runat="server">
+        
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-        </form>
+        
     </div>
     </div>
-
+      </form>
     <%--<script src="js/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />--%>

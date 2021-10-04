@@ -65,5 +65,10 @@ namespace BLL
         {
             return DALUsuario.ObtenerRoles();
         }
+
+        public static Usuario UsuarioSesion(string usuario, string pass)
+        {
+            return DALUsuario.UsuarioSesion(usuario, pass);
+        }
     }
 }

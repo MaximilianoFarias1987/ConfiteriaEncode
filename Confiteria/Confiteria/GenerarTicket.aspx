@@ -6,7 +6,7 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-    <div class="container">
+    <div class="container" id="hola">
         <h3>Generar Ticket</h3>
         <div class="row">
             <div class="col">
@@ -41,6 +41,12 @@
         <div class="row mt-2">
             <div class="col">
                         <asp:Button ID="btnCargarTabla" Text="Agregar Articulo" CssClass="btn btn-primary float-right" runat="server" OnClick="btnCargarTabla_Click" />
+            </div>
+
+            <div class="col">
+                <button onclick="printDiv('hola')">
+                    Descargar
+                </button>
             </div>
         </div>
 

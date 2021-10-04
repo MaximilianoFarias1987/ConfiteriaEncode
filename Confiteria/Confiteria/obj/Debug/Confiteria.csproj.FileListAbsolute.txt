@@ -131,3 +131,6 @@ C:\GitProyect\ConfiteriaEncode\Confiteria\Confiteria\obj\Debug\Confiteria.pdb
 C:\GitProject\ConfiteriaEncode\Confiteria\Confiteria\bin\Newtonsoft.Json.dll
 C:\GitProject\ConfiteriaEncode\Confiteria\Confiteria\bin\Newtonsoft.Json.xml
 C:\GitProject\ConfiteriaEncode\Confiteria\Confiteria\obj\Debug\Confiteria.dll.licenses
+C:\GitProyect\ConfiteriaEncode\Confiteria\Confiteria\bin\Newtonsoft.Json.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\Confiteria\bin\Newtonsoft.Json.xml
+C:\GitProyect\ConfiteriaEncode\Confiteria\Confiteria\obj\Debug\Confiteria.dll.licenses

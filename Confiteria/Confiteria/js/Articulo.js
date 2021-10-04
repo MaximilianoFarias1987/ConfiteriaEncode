@@ -8,7 +8,7 @@ function addRowDT(data) {
     //tabla.fnClearTable();
     for (var i = 0; i <= data.length; i++) {
         tabla.fnAddData([
-            data[i].IdArticulo,
+            //data[i].IdArticulo,
             data[i].Descripcion,
             data[i].Precio,
             data[i].Stock,
@@ -100,6 +100,10 @@ function cerrarModalRegistrar() {
 }
 
 
+function MensajeValidacion() {
+    swal("Error", "Debe completar todos los campos", "error");
+}
+
 function MensajeErrorValidacion() {
     swal("Error", "Ya existe un Articulo registrado con esos datos", "error");
 }
@@ -132,3 +136,6 @@ function MensajeActualizrOk() {
 function MensajeErrorActualizar() {
     swal("Error", "No se pudo actualizar el Articulo", "error");
 }
+
+
+

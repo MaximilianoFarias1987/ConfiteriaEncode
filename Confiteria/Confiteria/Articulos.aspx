@@ -11,7 +11,7 @@
     <%-- DATATABLE  --%>
 
     <div class="container">
-
+        
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary"> Lista de Articulos</h6>
@@ -60,35 +60,43 @@
                     </button>
                 </div>
 
-                <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>--%>
+               
+                
                 <div class="modal-body">
                     <%--<asp:HiddenField ID="HdIDUsuario" runat="server" />--%>
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control" placeholder="Nombre Articulo" /> 
+                            <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control" placeholder="Nombre Articulo" type="text"/>
+                            <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorDescripcion" />
                         </div>
                         <div class="col">
                             <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" placeholder="Precio" />
+                            <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorPrecio" />
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
                             <asp:TextBox runat="server" ID="txtStock" CssClass="form-control" placeholder="Stock" /> 
+                            <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorStock" />
                         </div>
                         <div class="col">
                             <asp:DropDownList runat="server" ID="cboRubro" CssClass="form-control"></asp:DropDownList> 
+                            <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorRubro" />
                         </div>
                     </div>
                    
                 </div>
+                
+
+        
                 <div class="modal-footer">
-
-                     <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnRegistrar_Click" />
-
+                    
+                     <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary"  runat="server" OnClick="btnRegistrar_Click"/>
+                    
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalRegistrar()">Cerrar</button>
                 </div>
+            
             </div>
         </div>
     </div>

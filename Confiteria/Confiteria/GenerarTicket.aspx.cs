@@ -72,13 +72,25 @@ namespace Confiteria
             }
         }
 
+
+        //private void SumarImportes()
+        //{
+        //    double total = 0;
+        //    if (gvCarrito.Rows.Count > 0)
+        //    {
+        //        foreach (GridViewRow x in gvCarrito.Rows)
+        //        {
+        //            total = Convert.ToDouble();
+        //        }
+        //    }
+        //}
+
         protected void btnCargarTabla_Click(object sender, EventArgs e)
         {
 
             btnGenerarTicket.Visible = true;
 
-            double total = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(ViewState["precio"]);
-
+            double total = 0;
             DataTable dt;
             if (Session["datos"] != null)
             {
@@ -100,14 +112,21 @@ namespace Confiteria
             row["Importe"] = importe.ToString();
             dt.Rows.Add(row);
 
+
+            
+
             gvCarrito.DataSource = dt;
             gvCarrito.DataBind();
             Session["datos"] = dt;
-            double total2 = 0;
-            total2 = total2 + importe;
-            Session["total"] = total2;
-            lblTotal.Text = Session["total"].ToString();
+
+            //Recorro el gridview para acumular la columna importe
+            foreach (GridViewRow x in gvCarrito.Rows)
+            {
+                total += Convert.ToDouble(row["Importe"].ToString());
+            }
+            lblTotal.Text = total.ToString();
             
+
         }
 
 

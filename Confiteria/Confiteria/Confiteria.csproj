@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articulos.aspx" />
+    <Content Include="cssLogin\main.css" />
+    <Content Include="cssLogin\util.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\bootstrap\mixins\_border-radius.css" />
     <Content Include="css\bootstrap\mixins\_screen-reader.css" />
@@ -80,8 +82,22 @@
     <Content Include="css\bootstrap\utilities\_stretched-link.css" />
     <Content Include="css\bootstrap\_media.css" />
     <Content Include="css\style.css" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="fontsLogin\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="fontsLogin\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
     <Content Include="GenerarTicket.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="imagesLogin\bg-01.jpg" />
+    <Content Include="imagesLogin\icons\favicon.ico" />
+    <Content Include="imagesLogin\icons\map-marker.png" />
+    <Content Include="imagesLogin\LoginImg.jpg" />
+    <Content Include="imagesLogin\loginImg4.png" />
+    <Content Include="jsLogin\Login.js" />
+    <Content Include="jsLogin\main.js" />
+    <Content Include="jsLogin\map-custom.js" />
     <Content Include="js\Articulo.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.min.js" />
@@ -92,8 +108,39 @@
     <Content Include="js\Ticket.js" />
     <Content Include="js\Usuario.js" />
     <Content Include="Local.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Mozos.aspx" />
     <Content Include="Usuarios.aspx" />
+    <Content Include="vendor\animate\animate.css" />
+    <Content Include="vendor\animsition\css\animsition.css" />
+    <Content Include="vendor\animsition\css\animsition.min.css" />
+    <Content Include="vendor\animsition\js\animsition.js" />
+    <Content Include="vendor\animsition\js\animsition.min.js" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\bootstrap\js\popper.js" />
+    <Content Include="vendor\bootstrap\js\popper.min.js" />
+    <Content Include="vendor\bootstrap\js\tooltip.js" />
+    <Content Include="vendor\countdowntime\countdowntime.js" />
+    <Content Include="vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="vendor\daterangepicker\moment.js" />
+    <Content Include="vendor\daterangepicker\moment.min.js" />
+    <Content Include="vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="vendor\select2\select2.css" />
+    <Content Include="vendor\select2\select2.js" />
+    <Content Include="vendor\select2\select2.min.css" />
+    <Content Include="vendor\select2\select2.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +179,13 @@
     <Compile Include="Local.aspx.designer.cs">
       <DependentUpon>Local.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mozos.aspx.cs">
       <DependentUpon>Mozos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +211,62 @@
     <Content Include="fonts\.DS_Store" />
     <Content Include="images\.DS_Store" />
     <Content Include="js\.DS_Store" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\core.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\list.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\path.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="fontsLogin\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="fontsLogin\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="fontsLogin\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="fontsLogin\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="fontsLogin\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="fontsLogin\poppins\Poppins-Black.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-Bold.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-Italic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-Light.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-Medium.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-Regular.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-Thin.ttf" />
+    <Content Include="fontsLogin\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="imagesLogin\loginImg3.webp" />
     <None Include="packages.config" />
     <Content Include="scss\.DS_Store" />
     <Content Include="scss\bootstrap\.DS_Store" />
@@ -250,6 +360,12 @@
     <Content Include="scss\bootstrap\_utilities.scss" />
     <Content Include="scss\bootstrap\_variables.scss" />
     <Content Include="scss\style.scss" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -261,6 +377,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{160f8f9e-aaed-41b7-8513-49c1f64e4876}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{9AA0A9CF-67A2-49E0-AD1C-8FBA8D75A1B7}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{c3ff9bd4-eeb6-4c5e-b07e-e08b9983fd58}</Project>

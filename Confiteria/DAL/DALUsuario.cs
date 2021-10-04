@@ -368,7 +368,7 @@ namespace DAL
 
             try
             {
-                string query = string.Format("select Count(*) from Usuario where nombreUsuario = '{0}' and idTipoDoc = {1} and numeroDoc = '{2}'", nombreUsuario,tipoDoc,numDoc);
+                string query = string.Format("select Count(*) from Usuarios where nombreUsuario = '{0}' and idTipoDoc = {1} and numeroDoc = '{2}'", nombreUsuario,tipoDoc,numDoc);
                 con.ConnectionString = Conexion.ObtenerConexion();
                 cmd.Connection = con;
                 cmd.CommandText = query;
@@ -390,6 +390,65 @@ namespace DAL
                 return false;
             }
         }
+
+        //INICIO SESION
+
+        public static Usuario UsuarioSesion(string usuario, string pass)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            Usuario u = null;
+            try
+            {
+                string query = string.Format("select * from Usuarios where nombreUsuario = '{0}' and contrasenia = '{1}'", usuario,pass);
+                con.ConnectionString = Conexion.ObtenerConexion();
+                cmd.Connection = con;
+                cmd.CommandText = query;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    u = CrearObjeto(dr);
+                }
+                con.Close();
+                return u;
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //public static Usuario UsuarioSesion(string usuario)
+        //{
+        //    SqlConnection con = new SqlConnection();
+        //    SqlCommand cmd = new SqlCommand();
+        //    Usuario u = null;
+        //    try
+        //    {
+        //        string query = string.Format("select * from Usuarios where nombreUsuario = '{0}'", usuario);
+        //        con.ConnectionString = Conexion.ObtenerConexion();
+        //        cmd.Connection = con;
+        //        cmd.CommandText = query;
+        //        con.Open();
+        //        SqlDataReader dr = cmd.ExecuteReader();
+
+        //        if (dr.Read())
+        //        {
+        //            u = CrearObjeto(dr);
+        //        }
+        //        con.Close();
+        //        return u;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        con.Close();
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
+
 
     }
 }
