@@ -20,12 +20,12 @@
   <body>
 		<form id="form1" runat="server">
 		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" class="active">
-				<%--<h1><a href="Home.aspx" class="logo"></a></h1>--%>
+			<nav id="sidebar" style="background-color:#3e64ff; padding-left:10px; padding-right:5px;" class="active">
+				<h1><a href="Home.aspx" class="logo">E.</a></h1>
                 <%--<img src="imagesLogin/LoginImg.jpg" alt="Alternate Text" style="height:60px; width:80px;" />--%>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-              <img src="imagesLogin/LoginImg.jpg" alt="Alternate Text" style="height:60px; width:80px;" />
+              <%--<img src="imagesLogin/LoginImg.jpg" alt="Alternate Text" style="height:60px; width:80px;" />--%>
             <a href="Home.aspx"><span class="fa fa-home"></span> Home</a>
           </li>
           <li>
@@ -49,7 +49,7 @@
               <asp:LinkButton ID="lnkTicket" runat="server" PostBackUrl="~/GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</asp:LinkButton>
           </li>
             <li>
-            <%--<a href="GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</a>--%>
+            <%--<a href="GenerarTicket.aspx"><span class="fa fa-credit-card" aria-hidden="true"></span> Ticket</a>
               <%--<asp:Button Text="Cerrar Sesión" ID="btnSalir" runat="server" CssClass="btn btn-link" OnClick="btnSalir_Click">--%>
                 <asp:LinkButton ID="lnkSalir" runat="server" OnClick="lnkSalir_Click"><span class="fa fa-sign-out" aria-hidden="true"></span> Salir</asp:LinkButton>
           </li>

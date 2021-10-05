@@ -27,13 +27,13 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Tipo Documento</th>
+                                <%--<th>Tipo Documento</th>--%>
                                 <th>Documento</th>
                                 <th>Email</th>
-                                <th>Telefono</th>
-                                <th>Direccion</th>
+                                <%--<th>Telefono</th>--%>
+                                <%--<th>Direccion</th>--%>
                                 <th>% Comision</th>
-                                <th>Fecha Ingeso</th>
+                                <%--<th>Fecha Ingeso</th>--%>
                                 <th>Acciones</th>
                             </tr>
                         </thead>

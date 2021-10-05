@@ -6,7 +6,7 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-    <div class="container" id="hola">
+    <div class="container">
         <h3>Generar Ticket</h3>
         <div class="row">
             <div class="col">
