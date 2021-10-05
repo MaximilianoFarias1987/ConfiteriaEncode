@@ -10,3 +10,9 @@ C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.csproj.A
 C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.dll
 C:\GitProyect\ConfiteriaEncode\Confiteria\Entidades\obj\Debug\Entidades.pdb
+C:\GitProject\Confiteria\Confiteria\Entidades\bin\Debug\Entidades.dll
+C:\GitProject\Confiteria\Confiteria\Entidades\bin\Debug\Entidades.pdb
+C:\GitProject\Confiteria\Confiteria\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\GitProject\Confiteria\Confiteria\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\GitProject\Confiteria\Confiteria\Entidades\obj\Debug\Entidades.dll
+C:\GitProject\Confiteria\Confiteria\Entidades\obj\Debug\Entidades.pdb

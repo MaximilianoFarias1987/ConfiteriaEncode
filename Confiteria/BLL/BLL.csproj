@@ -44,6 +44,7 @@
     <Compile Include="BLLArticulo.cs" />
     <Compile Include="BLLLocal.cs" />
     <Compile Include="BLLMozo.cs" />
+    <Compile Include="BLLReportes.cs" />
     <Compile Include="BLLRubro.cs" />
     <Compile Include="BLLTicket.cs" />
     <Compile Include="BLLUsuario.cs" />

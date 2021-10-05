@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
+    <Compile Include="DTOs\ReporteArticuloDTO.cs" />
+    <Compile Include="DTOs\ReporteMozoDTO.cs" />
     <Compile Include="FormaPago.cs" />
     <Compile Include="Local.cs" />
     <Compile Include="Mozo.cs" />

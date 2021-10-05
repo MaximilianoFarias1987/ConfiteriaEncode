@@ -124,7 +124,11 @@ namespace Confiteria
             {
                 total += Convert.ToDouble(row["Importe"].ToString());
             }
-            lblTotal.Text = total.ToString();
+            
+            lblMsjTotal.Text = "Total: ";
+            lblMsjTotal.Visible = true;
+            lblTotal.Visible = true;
+            lblTotal.Text = " $" + total.ToString();
             
 
         }

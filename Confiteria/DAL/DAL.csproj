@@ -47,6 +47,7 @@
     <Compile Include="DALArticulo.cs" />
     <Compile Include="DALLocal.cs" />
     <Compile Include="DALMozo.cs" />
+    <Compile Include="DALReportes.cs" />
     <Compile Include="DALRubro.cs" />
     <Compile Include="DALTicket.cs" />
     <Compile Include="DALUsuario.cs" />

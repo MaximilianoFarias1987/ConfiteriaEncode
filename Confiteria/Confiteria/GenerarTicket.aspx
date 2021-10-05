@@ -6,8 +6,8 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-    <div class="container">
-        <h3>Generar Ticket</h3>
+    <div class="container" id="descargar">
+        <h3>Ticket</h3>
         <div class="row">
             <div class="col">
                 <label>Articulo</label>
@@ -42,13 +42,15 @@
             <div class="col">
                         <asp:Button ID="btnCargarTabla" Text="Agregar Articulo" CssClass="btn btn-primary float-right" runat="server" OnClick="btnCargarTabla_Click" />
             </div>
-
+        </div>
+        <div class="row mt-2">
             <div class="col">
-                <button onclick="printDiv('hola')">
+                <button id="btnDescargar" class="btn btn-dark float-right" onclick="printDiv('descargar')">
                     Descargar
                 </button>
             </div>
         </div>
+        
 
 
         <asp:UpdatePanel runat="server">
@@ -61,11 +63,24 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
+        
 
         <div class="row mt-2">
+            
+            <div class="col">
+                <asp:Label ID="lblTotal" runat="server" Text="" CssClass="float-lg-right " Visible="False" Font-Bold="True" Font-Size="X-Large"></asp:Label> 
+                <asp:Label ID="lblMsjTotal" runat="server" Text="" CssClass="float-lg-right mr-2 mt-2" Visible="False" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                
+           </div>
+            
+        </div>
+
+        
+        <div class="row mt-2">
+            
             <div class="col">
                         <asp:Button ID="btnGenerarTicket" Text="Generar Ticket" CssClass="btn btn-primary float-right" runat="server" OnClick="btnGenerarTicket_Click" Visible="false" />
-                <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label>
+                
             </div>
             
         </div>

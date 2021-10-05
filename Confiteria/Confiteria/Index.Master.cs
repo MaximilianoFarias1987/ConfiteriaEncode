@@ -21,8 +21,8 @@ namespace Confiteria
                     Response.Redirect("Login.aspx");
                 }
                 lblUsuarioSesion.Text = "Hola " + usuario.NombreUsuario + "!";
-                lblFecha.Text = DateTime.Now.ToString();
-                
+                //lblFecha.Text = DateTime.Now.ToString();
+
 
                 if (usuario.IdRol == 2)
                 {
@@ -44,5 +44,7 @@ namespace Confiteria
             Session.Remove("Login");
             Response.Redirect("Login.aspx");
         }
+
+        
     }
 }
