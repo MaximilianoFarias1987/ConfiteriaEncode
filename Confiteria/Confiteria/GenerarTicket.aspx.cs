@@ -85,55 +85,82 @@ namespace Confiteria
         //    }
         //}
 
-        protected void btnCargarTabla_Click(object sender, EventArgs e)
+        private bool ValidarCamposTabla()
         {
-
-            btnGenerarTicket.Visible = true;
-
-            double total = 0;
-            DataTable dt;
-            if (Session["datos"] != null)
+            if (txtCantidad.Text == "" || cboArticulos.SelectedIndex == 0)
             {
-                dt = Session["datos"] as DataTable;
+                return false;
             }
             else
             {
-                dt = new DataTable();
-                dt.Columns.Add("Codigo Articulo");
-                dt.Columns.Add("Cantidad");
-                dt.Columns.Add("Precio Unitario");
-                dt.Columns.Add("Importe");
+                return true;
             }
-            DataRow row = dt.NewRow();
-            double importe = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(ViewState["precio"]);
-            row["Codigo Articulo"] = cboArticulos.Text;
-            row["Cantidad"] = txtCantidad.Text;
-            row["Precio Unitario"] = ViewState["precio"];
-            row["Importe"] = importe.ToString();
-            dt.Rows.Add(row);
-
-
             
+        }
 
-            gvCarrito.DataSource = dt;
-            gvCarrito.DataBind();
-            Session["datos"] = dt;
-
-            //Recorro el gridview para acumular la columna importe
-            foreach (GridViewRow x in gvCarrito.Rows)
+        protected void btnCargarTabla_Click(object sender, EventArgs e)
+        {
+            if (ValidarCamposTabla())
             {
-                total += Convert.ToDouble(row["Importe"].ToString());
+                btnGenerarTicket.Visible = true;
+
+                double total = 0;
+                DataTable dt;
+                if (Session["datos"] != null)
+                {
+                    dt = Session["datos"] as DataTable;
+                }
+                else
+                {
+                    dt = new DataTable();
+                    dt.Columns.Add("Codigo Articulo");
+                    dt.Columns.Add("Cantidad");
+                    dt.Columns.Add("Precio Unitario");
+                    dt.Columns.Add("Importe");
+                }
+                DataRow row = dt.NewRow();
+                double importe = Convert.ToDouble(txtCantidad.Text) * Convert.ToDouble(ViewState["precio"]);
+                row["Codigo Articulo"] = cboArticulos.Text;
+                row["Cantidad"] = txtCantidad.Text;
+                row["Precio Unitario"] = ViewState["precio"];
+                row["Importe"] = importe.ToString();
+                dt.Rows.Add(row);
+
+
+
+
+                gvCarrito.DataSource = dt;
+                gvCarrito.DataBind();
+                Session["datos"] = dt;
+
+                //Recorro el gridview para acumular la columna importe
+                foreach (GridViewRow x in gvCarrito.Rows)
+                {
+                    total += Convert.ToDouble(row["Importe"].ToString());
+                }
+
+                lblMsjTotal.Text = "Total: ";
+                lblMsjTotal.Visible = true;
+                lblTotal.Visible = true;
+                lblTotal.Text = " $" + total.ToString();
             }
+
             
-            lblMsjTotal.Text = "Total: ";
-            lblMsjTotal.Visible = true;
-            lblTotal.Visible = true;
-            lblTotal.Text = " $" + total.ToString();
             
 
         }
 
-
+        private bool ValidacionTicket()
+        {
+            if (cboFormaPago.SelectedIndex == 0 || cboMozo.SelectedIndex == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         //METODO PARA GENERAR TICKET CON SU DETALLE
         private bool CrearTicket(int idLocal, int idUsuario, int idMozo, int idFormaPago )
@@ -141,6 +168,7 @@ namespace Confiteria
             
             try
             {
+                
                 Ticket t = new Ticket
                 {
                     IdLocal = idLocal,
@@ -212,15 +240,23 @@ namespace Confiteria
 
         protected void btnGenerarTicket_Click(object sender, EventArgs e)
         {
-            if (CrearTicket(1, 3,Convert.ToInt32(cboMozo.Text),Convert.ToInt32(cboFormaPago.Text)))
+            if (ValidacionTicket())
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketSuccess();", true);
+                if (CrearTicket(1, 3, Convert.ToInt32(cboMozo.Text), Convert.ToInt32(cboFormaPago.Text)))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketSuccess();", true);
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketError();", true);
+                }
             }
             else
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketError();", true);
             }
-            
+
+
 
         }
     }

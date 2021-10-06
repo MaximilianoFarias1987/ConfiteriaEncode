@@ -178,6 +178,52 @@
         });
         var tabla, data;
 
+
+        //Validaciones
+
+        let descripcion = document.getElementById('<%=txtDescripcion.ClientID%>').value;
+        let precio = document.getElementById('<%=txtPrecio.ClientID%>').value;
+        let stock = document.getElementById('<%=txtStock.ClientID%>').value;
+        var rubro = document.getElementById('<%=cboRubro.ClientID%>').selectedIndex;
+
+        function validacionRegistro() {
+            if (descripcion === "" || descripcion === undefined) {
+                swal('Debe ingresar un Nombre de Articulo');
+            }
+            if (precio === "" || precio === undefined) {
+                swal('Debe ingresar un Precio');
+            }
+            if (stock === "" || stock === undefined) {
+                swal('Debe ingresar un Stock');
+            }
+            if (rubro > 0) {
+                swal('Debe ingresar un Nombre de Articulo');
+            }
+        }
+
+        let descripcionAct = document.getElementById('<%=txtDescripcionAct.ClientID%>').value;
+        let precioAct = document.getElementById('<%=txtPrecioAct.ClientID%>').value;
+        let stockAct = document.getElementById('<%=txtStockAct.ClientID%>').value;
+        var rubroAct = document.getElementById('<%=cboRubroAct.ClientID%>').selectedIndex;
+
+        function validacionActualizar() {
+            if (descripcionAct === "" || descripcionAct === undefined) {
+                swal('Debe ingresar un Nombre de Articulo');
+            }
+            if (precioAct === "" || precioAct === undefined) {
+                swal('Debe ingresar un Precio');
+            }
+            if (stockAct === "" || stockAct === undefined) {
+                swal('Debe ingresar un Stock');
+            }
+            if (rubroAct > 0) {
+                swal('Debe ingresar un Nombre de Articulo');
+            }
+        }
+
+        //Fin Validaciones
+
+
         function addRowDT(data) {
             tabla = $("#tblArticulos").dataTable();
             //tabla.fnClearTable();

@@ -40,7 +40,12 @@
 
         <div class="row mt-2">
             <div class="col">
-                        <asp:Button ID="btnCargarTabla" Text="Agregar Articulo" CssClass="btn btn-primary float-right" runat="server" OnClick="btnCargarTabla_Click" />
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <asp:Button ID="btnCargarTabla" Text="Agregar Articulo" CssClass="btn btn-primary float-right" runat="server" OnClick="btnCargarTabla_Click" OnClientClick="validacionAgregarAlCarro();" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                        
             </div>
         </div>
         <div class="row mt-2">
@@ -79,7 +84,7 @@
         <div class="row mt-2">
             
             <div class="col">
-                        <asp:Button ID="btnGenerarTicket" Text="Generar Ticket" CssClass="btn btn-primary float-right" runat="server" OnClick="btnGenerarTicket_Click" Visible="false" />
+                        <asp:Button ID="btnGenerarTicket" Text="Generar Ticket" CssClass="btn btn-primary float-right" runat="server" OnClick="btnGenerarTicket_Click" OnClientClick="validacionGenerarTicket();" Visible="false" />
                 
             </div>
             
@@ -101,4 +106,41 @@
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="js/Ticket.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            console.log(cantidad);
+        });
+
+        //Validaciones
+        let cantidad = document.getElementById('<%=txtCantidad.ClientID%>').value;
+        let articulo = document.getElementById('<%=cboArticulos.ClientID%>').selectedIndex;
+        let formaPago = document.getElementById('<%=cboFormaPago.ClientID%>').selectedIndex;
+        var mozo = document.getElementById('<%=cboMozo.ClientID%>').selectedIndex;
+
+        function validacionGenerarTicket() {
+            if (formaPago > 0) {
+                arti('Debe seleccionar una Forma de Pago');
+            }
+            if (mozo > 0) {
+                swal('Debe seleccionar un Mozo');
+            }
+        }
+        
+        function validacionAgregarAlCarro() {
+            if (articulo > 0) {
+                swal('Debe seleccionar un Articulo');
+            }
+            if (cantidad === "" || cantidad === undefined) {
+                swal('Debe ingresar una cantidad');
+            }
+        }
+
+        console.log(cantidad);
+
+    //Fin Validaciones
+    </script>
 </asp:Content>
+
+
