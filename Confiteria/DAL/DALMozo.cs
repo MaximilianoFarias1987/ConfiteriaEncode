@@ -31,11 +31,8 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@apellido", m.Apellido);
                 cmd.Parameters.AddWithValue("@idTipoDoc", m.IdTipoDoc);
                 cmd.Parameters.AddWithValue("@numDocumento", m.NumeroDoc);
-                cmd.Parameters.AddWithValue("@email", m.Email);
                 cmd.Parameters.AddWithValue("@telefono", m.Telefono);
-                cmd.Parameters.AddWithValue("@direccion", m.Direccion);
                 cmd.Parameters.AddWithValue("@porComision", m.PorComision);
-                cmd.Parameters.AddWithValue("@fechaIngreso", DateTime.Today);
 
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
@@ -84,11 +81,8 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@apellido", m.Apellido);
                 cmd.Parameters.AddWithValue("@idTipoDoc", m.IdTipoDoc);
                 cmd.Parameters.AddWithValue("@numDocumento", m.NumeroDoc);
-                cmd.Parameters.AddWithValue("@email", m.Email);
                 cmd.Parameters.AddWithValue("@telefono", m.Telefono);
-                cmd.Parameters.AddWithValue("@direccion", m.Direccion);
                 cmd.Parameters.AddWithValue("@porComision", m.PorComision);
-                cmd.Parameters.AddWithValue("@fechaIngreso", DateTime.Now);
 
                 //Conexion.transaction = Conexion.conexion.BeginTransaction();
                 //Conexion.Cmd.Transaction = Conexion.transaction;
@@ -183,25 +177,13 @@ namespace DAL
             {
                 m.NumeroDoc = dr["numDocumento"].ToString();
             }
-            if (dr["email"].ToString() != null)
-            {
-                m.Email = dr["email"].ToString();
-            }
             if (dr["telefono"].ToString() != null)
             {
                 m.Telefono = dr["telefono"].ToString();
             }
-            if (dr["direccion"].ToString() != null)
-            {
-                m.Direccion = dr["direccion"].ToString();
-            }
             if (dr["porComision"].ToString() != null)
             {
                 m.PorComision = (double)dr["porComision"];
-            }
-            if (dr["fechaIngreso"].ToString() != null)
-            {
-                m.FechaIngreso = (DateTime)dr["fechaIngreso"];
             }
 
 
@@ -295,14 +277,14 @@ namespace DAL
 
         //VALIDAR MOZO
 
-        public static bool ValidarMozoUnico(string email, int tipoDoc, string numDoc)
+        public static bool ValidarMozoUnico(int tipoDoc, string numDoc)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
 
             try
             {
-                string query = string.Format("select Count(*) from Mozos where email = '{0}' and idTipoDoc = {1} and numeroDoc = '{2}'", email, tipoDoc, numDoc);
+                string query = string.Format("select Count(*) from Mozos where idTipoDoc = {0} and numeroDoc = '{1}'", tipoDoc, numDoc);
                 con.ConnectionString = Conexion.ObtenerConexion();
                 cmd.Connection = con;
                 cmd.CommandText = query;

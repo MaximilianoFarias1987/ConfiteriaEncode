@@ -55,9 +55,9 @@ namespace Confiteria
 
 
         //METODO REGISTRAR
-        public bool insertarMozo(string nombre, string apellido, int tipoDoc, string documento, string email, string tel, string direccion, double porCom)
+        public bool insertarMozo(string nombre, string apellido, int tipoDoc, string documento, string tel, double porCom)
         {
-            if (BLLMozo.ValidarMozoUnico(email, tipoDoc, documento))
+            if (BLLMozo.ValidarMozoUnico(tipoDoc, documento))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorValidacion();", true);
                 return false;
@@ -70,9 +70,7 @@ namespace Confiteria
                     Apellido = apellido,
                     IdTipoDoc = tipoDoc,
                     NumeroDoc = documento,
-                    Email = email,
                     Telefono = tel,
-                    Direccion = direccion,
                     PorComision = porCom
                 };
                 return BLLMozo.InsertarMozo(m);
@@ -81,9 +79,9 @@ namespace Confiteria
 
 
         //METODO ACTUALIZAR
-        public bool ActualizarMozo(int id, string nombre, string apellido, int tipoDoc, string documento, string email, string tel, string direccion, double porCom)
+        public bool ActualizarMozo(int id, string nombre, string apellido, int tipoDoc, string documento, string tel, double porCom)
         {
-            if (BLLMozo.ValidarMozoUnico(email, tipoDoc, documento))
+            if (BLLMozo.ValidarMozoUnico(tipoDoc, documento))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorValidacion();", true);
                 return false;
@@ -97,56 +95,129 @@ namespace Confiteria
                     Apellido = apellido,
                     IdTipoDoc = tipoDoc,
                     NumeroDoc = documento,
-                    Email = email,
                     Telefono = tel,
-                    Direccion = direccion,
                     PorComision = porCom
                 };
                 return BLLMozo.ActualizarMozo(m);
             }
         }
 
+
+        private bool ValidacionRegistrar()
+        {
+            if (txtNombre.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtApellido.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboTipoDoc.SelectedIndex == 0)
+            {
+                return false;
+            }
+            if (txtNumDocumento.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtTelefono.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtComision.Text == string.Empty)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+
+        private bool ValidacionActualizar()
+        {
+            if (txtNombreAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtApellidoAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboTipoDocAct.SelectedIndex == 0)
+            {
+                return false;
+            }
+            if (txtDocumentoAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtTelefonoAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtComisionAct.Text == string.Empty)
+            {
+                return false;
+            }
+            return true;
+        }
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (insertarMozo(txtNombre.Text, txtApellido.Text, Convert.ToInt32(cboTipoDoc.Text), txtNumDocumento.Text, txtEmail.Text, txtTelefono.Text, txtDireccion.Text,Convert.ToDouble(txtComision.Text)))
+            if (ValidacionRegistrar())
             {
-                
-                txtNombre.Text = string.Empty;
-                txtApellido.Text = string.Empty;
-                cboTipoDoc.SelectedIndex = 0;
-                txtNumDocumento.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
-                txtDireccion.Text = string.Empty;
-                txtComision.Text = string.Empty;
-                //Response.Redirect("Mozos.aspx");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                if (insertarMozo(txtNombre.Text, txtApellido.Text, Convert.ToInt32(cboTipoDoc.Text), txtNumDocumento.Text, txtTelefono.Text, Convert.ToDouble(txtComision.Text)))
+                {
+
+                    txtNombre.Text = string.Empty;
+                    txtApellido.Text = string.Empty;
+                    cboTipoDoc.SelectedIndex = 0;
+                    txtNumDocumento.Text = string.Empty;
+                    txtEmail.Text = string.Empty;
+                    txtTelefono.Text = string.Empty;
+                    txtDireccion.Text = string.Empty;
+                    txtComision.Text = string.Empty;
+                    //Response.Redirect("Mozos.aspx");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "validacionRegistro();", true);
             }
+            
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            var id = HdIDMozo.Value;
-            if (ActualizarMozo(Convert.ToInt32(id), txtNombreAct.Text, txtApellidoAct.Text, Convert.ToInt32(cboTipoDocAct.Text), txtDocumentoAct.Text, txtEmailAct.Text,txtTelefonoAct.Text, txtDireccionAct.Text, Convert.ToDouble(txtComisionAct.Text)))
+            if (ValidacionActualizar())
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
-                txtNombreAct.Text = string.Empty;
-                txtApellidoAct.Text = string.Empty;
-                cboTipoDocAct.SelectedIndex = 0;
-                txtDocumentoAct.Text = string.Empty;
-                txtEmailAct.Text = string.Empty;
-                txtTelefonoAct.Text = string.Empty;
-                txtDireccionAct.Text = string.Empty;
-                txtComisionAct.Text = string.Empty;
+                var id = HdIDMozo.Value;
+                if (ActualizarMozo(Convert.ToInt32(id), txtNombreAct.Text, txtApellidoAct.Text, Convert.ToInt32(cboTipoDocAct.Text), txtDocumentoAct.Text, txtTelefonoAct.Text, Convert.ToDouble(txtComisionAct.Text)))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
+                    txtNombreAct.Text = string.Empty;
+                    txtApellidoAct.Text = string.Empty;
+                    cboTipoDocAct.SelectedIndex = 0;
+                    txtDocumentoAct.Text = string.Empty;
+                    txtTelefonoAct.Text = string.Empty;
+                    txtComisionAct.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "validacionActualizar();", true);
             }
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

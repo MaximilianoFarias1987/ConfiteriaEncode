@@ -141,15 +141,6 @@ namespace Confiteria
         protected global::System.Web.UI.WebControls.TextBox txtDocumentoAct;
 
         /// <summary>
-        /// Control txtEmailAct.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmailAct;
-
-        /// <summary>
         /// Control txtTelefonoAct.
         /// </summary>
         /// <remarks>
@@ -157,15 +148,6 @@ namespace Confiteria
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTelefonoAct;
-
-        /// <summary>
-        /// Control txtDireccionAct.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDireccionAct;
 
         /// <summary>
         /// Control txtComisionAct.

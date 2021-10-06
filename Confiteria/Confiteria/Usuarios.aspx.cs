@@ -121,43 +121,127 @@ namespace Confiteria
             }
         }
 
+
+        private bool ValidacionRegistrar()
+        {
+            if (txtNombre.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtApellido.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboTipoDoc.SelectedIndex == 0)
+            {
+                return false;
+            }
+            if (txtNumDocumento.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtNombreUsuario.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtPassword.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboRol.SelectedIndex == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        private bool ValidacionActualizar()
+        {
+            if (txtNombreActualizar.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtApellidoAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboTipoDocAct.SelectedIndex == 0)
+            {
+                return false;
+            }
+            if (txtDocAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtNombreUsuarioAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtPasswordAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboRolAct.SelectedIndex == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (insertarUsuario(txtNombre.Text,txtApellido.Text,Convert.ToInt32(cboTipoDoc.Text), txtNumDocumento.Text,txtNombreUsuario.Text,txtPassword.Text, Convert.ToInt32(cboRol.Text)))
+            if (ValidacionRegistrar())
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
-                txtNombre.Text = string.Empty;
-                txtApellido.Text = string.Empty;
-                cboTipoDoc.SelectedIndex = 0;
-                cboRol.SelectedIndex = 0;
-                txtNumDocumento.Text = string.Empty;
-                txtNombreUsuario.Text = string.Empty;
-                txtPassword.Text = string.Empty;
+                if (insertarUsuario(txtNombre.Text, txtApellido.Text, Convert.ToInt32(cboTipoDoc.Text), txtNumDocumento.Text, txtNombreUsuario.Text, txtPassword.Text, Convert.ToInt32(cboRol.Text)))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                    txtNombre.Text = string.Empty;
+                    txtApellido.Text = string.Empty;
+                    cboTipoDoc.SelectedIndex = 0;
+                    cboRol.SelectedIndex = 0;
+                    txtNumDocumento.Text = string.Empty;
+                    txtNombreUsuario.Text = string.Empty;
+                    txtPassword.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "validacionRegistro();", true);
             }
+            
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            var id = HdIDUsuario.Value;
-            if (ActualizarUsuario(Convert.ToInt32(id),txtNombreActualizar.Text, txtApellidoAct.Text, Convert.ToInt32(cboTipoDocAct.Text), txtDocAct.Text, txtNombreUsuarioAct.Text, txtPasswordAct.Text, Convert.ToInt32(cboRolAct.Text)))
+            if (ValidacionActualizar())
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
-                txtNombreActualizar.Text = string.Empty;
-                txtApellidoAct.Text = string.Empty;
-                cboTipoDocAct.SelectedIndex = 0;
-                cboRolAct.SelectedIndex = 0;
-                txtDocAct.Text = string.Empty;
-                txtNombreUsuarioAct.Text = string.Empty;
-                txtPasswordAct.Text = string.Empty;
+                var id = HdIDUsuario.Value;
+                if (ActualizarUsuario(Convert.ToInt32(id), txtNombreActualizar.Text, txtApellidoAct.Text, Convert.ToInt32(cboTipoDocAct.Text), txtDocAct.Text, txtNombreUsuarioAct.Text, txtPasswordAct.Text, Convert.ToInt32(cboRolAct.Text)))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
+                    txtNombreActualizar.Text = string.Empty;
+                    txtApellidoAct.Text = string.Empty;
+                    cboTipoDocAct.SelectedIndex = 0;
+                    cboRolAct.SelectedIndex = 0;
+                    txtDocAct.Text = string.Empty;
+                    txtNombreUsuarioAct.Text = string.Empty;
+                    txtPasswordAct.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "validacionActualizar();", true);
             }
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

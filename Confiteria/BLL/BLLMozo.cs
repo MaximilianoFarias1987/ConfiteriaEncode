@@ -48,9 +48,9 @@ namespace BLL
 
         //VALIDAR MOZO
 
-        public static bool ValidarMozoUnico(string email, int tipoDoc, string numDoc)
+        public static bool ValidarMozoUnico( int tipoDoc, string numDoc)
         {
-            return DALMozo.ValidarMozoUnico(email, tipoDoc, numDoc);
+            return DALMozo.ValidarMozoUnico( tipoDoc, numDoc);
         }
     }
 }

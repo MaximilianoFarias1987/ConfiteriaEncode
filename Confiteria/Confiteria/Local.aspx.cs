@@ -99,41 +99,109 @@ namespace Confiteria
                 return BLLLocal.ActualizarLocal(l);
             }
         }
+
+        private bool ValidacionRegistrar()
+        {
+            if (txtRazonSocial.Text== string.Empty)
+            {
+                return false;
+            }
+            if (txtDireccion.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtCuit.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboTipoIva.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtIngBrutos.Text == string.Empty)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        private bool ValidacionActualizar()
+        {
+            if (txtRazonSocialAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtDireccionAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtCuitAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (cboTipoIvaAct.Text == string.Empty)
+            {
+                return false;
+            }
+            if (txtIngBrutoAct.Text == string.Empty)
+            {
+                return false;
+            }
+            return true;
+        }
+
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (insertarLocal(txtRazonSocial.Text, txtDireccion.Text, txtCuit.Text, Convert.ToInt32(cboTipoIva.Text), Convert.ToDouble(txtIngBrutos.Text)))
+            if (ValidacionRegistrar())
             {
+                if (insertarLocal(txtRazonSocial.Text, txtDireccion.Text, txtCuit.Text, Convert.ToInt32(cboTipoIva.Text), Convert.ToDouble(txtIngBrutos.Text)))
+                {
 
-                txtRazonSocial.Text = string.Empty;
-                txtDireccion.Text = string.Empty;
-                cboTipoIva.SelectedIndex = 0;
-                txtCuit.Text = string.Empty;
-                txtIngBrutos.Text = string.Empty;
-                //Response.Redirect("Mozos.aspx");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                    txtRazonSocial.Text = string.Empty;
+                    txtDireccion.Text = string.Empty;
+                    cboTipoIva.SelectedIndex = 0;
+                    txtCuit.Text = string.Empty;
+                    txtIngBrutos.Text = string.Empty;
+                    //Response.Redirect("Mozos.aspx");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeError();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "validacionRegistro();", true);
             }
+            
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            var id = HdIDLocal.Value;
-            if (ActualizarLocal(Convert.ToInt32(id), txtRazonSocialAct.Text, txtDireccionAct.Text, txtCuitAct.Text, Convert.ToInt32(cboTipoIvaAct.Text), Convert.ToDouble(txtIngBrutoAct.Text)))
+            if (ValidacionActualizar())
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
-                txtRazonSocial.Text = string.Empty;
-                txtDireccion.Text = string.Empty;
-                cboTipoIva.SelectedIndex = 0;
-                txtCuit.Text = string.Empty;
-                txtIngBrutos.Text = string.Empty;
+                var id = HdIDLocal.Value;
+                if (ActualizarLocal(Convert.ToInt32(id), txtRazonSocialAct.Text, txtDireccionAct.Text, txtCuitAct.Text, Convert.ToInt32(cboTipoIvaAct.Text), Convert.ToDouble(txtIngBrutoAct.Text)))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
+                    txtRazonSocial.Text = string.Empty;
+                    txtDireccion.Text = string.Empty;
+                    cboTipoIva.SelectedIndex = 0;
+                    txtCuit.Text = string.Empty;
+                    txtIngBrutos.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeErrorActualizar();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "validacionActualizar();", true);
             }
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

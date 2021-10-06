@@ -61,7 +61,10 @@
                 </div>
 
                
-                
+                <asp:UpdatePanel runat="server">
+        <ContentTemplate>  
+
+        
                 <div class="modal-body">
                     <%--<asp:HiddenField ID="HdIDUsuario" runat="server" />--%>
                     
@@ -71,13 +74,13 @@
                             <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorDescripcion" />
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" placeholder="Precio" />
+                            <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" placeholder="Precio" pattern="/^\d+(?:\.\d{1,2})?$/" />
                             <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorPrecio" />
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtStock" CssClass="form-control" placeholder="Stock" /> 
+                            <asp:TextBox runat="server" ID="txtStock" CssClass="form-control" placeholder="Stock" pattern="[0-9]+" /> 
                             <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorStock" />
                         </div>
                         <div class="col">
@@ -92,10 +95,12 @@
         
                 <div class="modal-footer">
                     
-                     <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary"  runat="server" OnClick="btnRegistrar_Click"/>
+                     <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary"  runat="server" OnClick="btnRegistrar_Click" />
                     
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalRegistrar()">Cerrar</button>
                 </div>
+            </ContentTemplate>
+    </asp:UpdatePanel>
             
             </div>
         </div>
@@ -112,6 +117,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
+                <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+
+            
                 <div class="modal-body">
                     <asp:HiddenField ID="HdIDArticulo" runat="server" />
                     
@@ -120,12 +130,12 @@
                             <asp:TextBox runat="server" ID="txtDescripcionAct" CssClass="form-control" placeholder="Nombre Articulo" /> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecioAct" CssClass="form-control" placeholder="Precio" />
+                            <asp:TextBox runat="server" ID="txtPrecioAct" CssClass="form-control" placeholder="Precio" pattern="/^\d+(?:\.\d{1,2})?$/" />
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtStockAct" CssClass="form-control" placeholder="Stock" /> 
+                            <asp:TextBox runat="server" ID="txtStockAct" CssClass="form-control" placeholder="Stock" pattern="[0-9]+" /> 
                         </div>
                         <div class="col">
                             <asp:DropDownList runat="server" ID="cboRubroAct" CssClass="form-control"></asp:DropDownList> 
@@ -135,10 +145,12 @@
                 </div>
                 <div class="modal-footer">
 
-                     <asp:Button ID="btnActualizar" Text="Actualizar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnActualizar_Click" />
+                     <asp:Button ID="btnActualizar" Text="Actualizar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnActualizar_Click" OnClientClick="clearTabla(); sendDataAjax();"/>
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalActualizar()">Cerrar</button>
                 </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
             </div>
         </div>
     </div>
@@ -174,6 +186,7 @@
     <%--<script src="js/Articulo.js"></script>--%>
     <script>
         $(document).ready(function () {
+            //tabla.fnClearTable();
             sendDataAjax();
         });
         var tabla, data;
@@ -188,17 +201,18 @@
 
         function validacionRegistro() {
             if (descripcion === "" || descripcion === undefined) {
-                swal('Debe ingresar un Nombre de Articulo');
+                swal('Debe completar todos los campos');
             }
             if (precio === "" || precio === undefined) {
-                swal('Debe ingresar un Precio');
+                swal('Debe completar todos los campos');
             }
             if (stock === "" || stock === undefined) {
-                swal('Debe ingresar un Stock');
+                swal('Debe completar todos los campos');
             }
             if (rubro > 0) {
-                swal('Debe ingresar un Nombre de Articulo');
+                swal('Debe completar todos los campos');
             }
+            console.log(descripcion, precio, stock,rubro);
         }
 
         let descripcionAct = document.getElementById('<%=txtDescripcionAct.ClientID%>').value;
@@ -216,17 +230,20 @@
             if (stockAct === "" || stockAct === undefined) {
                 swal('Debe ingresar un Stock');
             }
-            if (rubroAct > 0) {
+            if (rubroAct === 0) {
                 swal('Debe ingresar un Nombre de Articulo');
             }
         }
 
         //Fin Validaciones
 
+        function clearTabla() {
+            tabla.fnClearTable();
+        }
 
         function addRowDT(data) {
             tabla = $("#tblArticulos").dataTable();
-            //tabla.fnClearTable();
+            /*tabla.fnClearTable();*/
             for (var i = 0; i <= data.length; i++) {
                 tabla.fnAddData([
                     data[i].IdArticulo,
@@ -357,5 +374,5 @@
         function MensajeErrorActualizar() {
             swal("Error", "No se pudo actualizar el Articulo", "error");
         }
-                </script>
+        </script>
 </asp:Content>

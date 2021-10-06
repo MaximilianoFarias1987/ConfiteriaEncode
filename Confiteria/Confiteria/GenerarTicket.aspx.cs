@@ -73,22 +73,13 @@ namespace Confiteria
         }
 
 
-        //private void SumarImportes()
-        //{
-        //    double total = 0;
-        //    if (gvCarrito.Rows.Count > 0)
-        //    {
-        //        foreach (GridViewRow x in gvCarrito.Rows)
-        //        {
-        //            total = Convert.ToDouble();
-        //        }
-        //    }
-        //}
+        
 
         private bool ValidarCamposTabla()
         {
             if (txtCantidad.Text == "" || cboArticulos.SelectedIndex == 0)
             {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "validacionAgregarAlCarro();", true);
                 return false;
             }
             else
@@ -144,9 +135,14 @@ namespace Confiteria
                 lblTotal.Visible = true;
                 lblTotal.Text = " $" + total.ToString();
             }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "validacionAgregarAlCarro();", true);
+            }
 
             
-            
+
+
 
         }
 
@@ -253,7 +249,7 @@ namespace Confiteria
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketError();", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "validacionGenerarTicket()", true);
             }
 
 

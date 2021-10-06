@@ -190,7 +190,9 @@ namespace Confiteria
                     cboRubro.SelectedIndex = 0;
                     txtStock.Text = string.Empty;
                     //Response.Redirect("Mozos.aspx");
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeSuccess();", true);
+
                 }
                 else
                 {
@@ -199,7 +201,8 @@ namespace Confiteria
             }
             else
             {
-                validacion();
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "validacionRegistro();", true);
+                
             }
 
         }
@@ -211,7 +214,8 @@ namespace Confiteria
             {
                 if (ActualizarArticulo(Convert.ToInt32(id), txtDescripcionAct.Text, Convert.ToDouble(txtPrecioAct.Text), Convert.ToInt32(txtStockAct.Text), Convert.ToInt32(cboRubroAct.Text)))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeActualizrOk();", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeActualizrOk();", true);
                     txtDescripcion.Text = string.Empty;
                     txtPrecio.Text = string.Empty;
                     cboRubro.SelectedIndex = 0;

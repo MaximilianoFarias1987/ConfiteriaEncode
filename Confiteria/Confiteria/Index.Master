@@ -18,9 +18,10 @@
     </asp:ContentPlaceHolder>
   </head>
   <body>
-
+      
+        
 		<form id="form1" runat="server">
-            
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" style="background-color:#3e64ff; padding-left:10px; padding-right:5px;" class="active">
