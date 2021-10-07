@@ -79,10 +79,11 @@
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Nombre" /> 
+                            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Nombre" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 4 caracters y un maximo de 25"/> 
+                            <%-- Exprecion regular que solo permite letras mayusculas y minusculas y como maximo 12 caracteres y minimo 4 --%>
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Apellido" />
+                            <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Apellido" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 4 caracters y un maximo de 25" />
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -90,15 +91,15 @@
                             <asp:DropDownList runat="server" ID="cboTipoDoc" CssClass="form-control"></asp:DropDownList> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtNumDocumento" CssClass="form-control" placeholder="Numero Documento" pattern="[0-9]+"/>
+                            <asp:TextBox runat="server" ID="txtNumDocumento" CssClass="form-control" placeholder="Numero Documento" pattern="[0-9]{8,8}" title ="Debe ingresar solo numeros del 0 al 9 (para un documento valido debe ingresar 8 caracteres)"/>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtNombreUsuario" CssClass="form-control" placeholder="Nombre Usuario" /> 
+                            <asp:TextBox runat="server" ID="txtNombreUsuario" CssClass="form-control" placeholder="Nombre Usuario" pattern="[A-Za-z0-9]{4,20}" title="El Nombre de Usuario solo puede contener numeros y letras. Un minimo de 8 caracteres y un maximo de 20"/>
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" placeholder="Contraseña" type="password" />
+                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" placeholder="Contraseña" type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){8,12}" title="La contraseña debe contener al menos una letra mayuscula, minuscula y  un valor numerico. Un minimo de 8 caracteres y un maximo de 12." />
                         </div>
                     </div>
                     <div class="row mt-2">

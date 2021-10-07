@@ -106,44 +106,48 @@ namespace Confiteria
         {
             if (txtDescripcion.Text == string.Empty )
             {
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
                 txtDescripcion.Focus();
-                lblErrorDescripcion.Text = "Debe ingresar un Nombre de Articulo";
-                lblErrorDescripcion.ForeColor = Color.Red;
-                lblErrorDescripcion.Visible = true;
+                //lblErrorDescripcion.Text = "Debe ingresar un Nombre de Articulo";
+                //lblErrorDescripcion.ForeColor = Color.Red;
+                //lblErrorDescripcion.Visible = true;
                 return false;
             }
             if (txtPrecio.Text == string.Empty)
             {
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 txtPrecio.Focus();
-                lblErrorPrecio.Text = "Debe ingresar un Precio";
-                lblErrorPrecio.ForeColor = Color.Red;
-                lblErrorPrecio.Visible = true;
+                //lblErrorPrecio.Text = "Debe ingresar un Precio";
+                //lblErrorPrecio.ForeColor = Color.Red;
+                //lblErrorPrecio.Visible = true;
                 return false;
             }
             if (txtStock.Text == string.Empty)
             {
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 txtStock.Focus();
-                lblErrorStock.Text = "Debe ingresar un Stock";
-                lblErrorStock.ForeColor = Color.Red;
-                lblErrorStock.Visible = true;
+                //lblErrorStock.Text = "Debe ingresar un Stock";
+                //lblErrorStock.ForeColor = Color.Red;
+                //lblErrorStock.Visible = true;
                 return false;
             }
             if (cboRubro.SelectedIndex < 1)
             {
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 cboRubro.Focus();
-                lblErrorRubro.Text = "Debe seleccionar un Rubro";
-                lblErrorRubro.ForeColor = Color.Red;
-                lblErrorRubro.Visible = true;
+                //lblErrorRubro.Text = "Debe seleccionar un Rubro";
+                //lblErrorRubro.ForeColor = Color.Red;
+                //lblErrorRubro.Visible = true;
                 return false;
             }
-            lblErrorDescripcion.Visible = false;
-            lblErrorPrecio.Visible = false;
-            lblErrorStock.Visible = false;
-            lblErrorRubro.Visible = false;
+            //lblErrorDescripcion.Visible = false;
+            //lblErrorPrecio.Visible = false;
+            //lblErrorStock.Visible = false;
+            //lblErrorRubro.Visible = false;
             return true;
         }
 
@@ -152,25 +156,29 @@ namespace Confiteria
         {
             if (txtDescripcionAct.Text == string.Empty)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 //txtDescripcionAct.Focus();
                 return false;
             }
             if (txtPrecioAct.Text == string.Empty)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 //txtPrecioAct.Focus();
                 return false;
             }
             if (txtStockAct.Text == string.Empty)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 //txtStockAct.Focus();
                 return false;
             }
             if (cboRubroAct.SelectedIndex < 1)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeValidacion();", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "sweetAlert", "MensajeValidacion();", true);
+
                 cboRubroAct.Focus();
                 return false;
             }

@@ -70,19 +70,20 @@
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control" placeholder="Nombre Articulo" type="text"/>
+                            <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control" placeholder="Nombre Articulo" type="text" pattern="^[A-Za-z0-9 ]{3,25}" title="Debe ingresar solo letras o numeros, un minimo de 3 caracters y un maximo de 25"/>
                             <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorDescripcion" />
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" placeholder="Precio" pattern="/^\d+(?:\.\d{1,2})?$/" />
+                            <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" placeholder="Precio" pattern="[0-9,]{1,8}" title="Debe ingresar numeros enteros o decimales" />
                             <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorPrecio" />
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtStock" CssClass="form-control" placeholder="Stock" pattern="[0-9]+" /> 
-                            <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorStock" />
-                        </div>
+                        <asp:TextBox runat="server" ID="txtStock" CssClass="form-control" placeholder="Stock"
+                            pattern="[0-9]{1,8}" title="Debe ingresar solo numeros del 0 al 9 " />
+                        <asp:Label Text="" runat="server" Visible="false" ID="lblErrorStock" />
+                    </div>
                         <div class="col">
                             <asp:DropDownList runat="server" ID="cboRubro" CssClass="form-control"></asp:DropDownList> 
                             <asp:Label Text="" runat="server" Visible ="false" ID="lblErrorRubro" />
@@ -127,15 +128,15 @@
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtDescripcionAct" CssClass="form-control" placeholder="Nombre Articulo" /> 
+                            <asp:TextBox runat="server" ID="txtDescripcionAct" CssClass="form-control" placeholder="Nombre Articulo" pattern="^[A-Za-z0-9 ]{3,25}" title="Debe ingresar solo letras o numeros, un minimo de 3 caracters y un maximo de 25" /> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecioAct" CssClass="form-control" placeholder="Precio" pattern="/^\d+(?:\.\d{1,2})?$/" />
+                            <asp:TextBox runat="server" ID="txtPrecioAct" CssClass="form-control" placeholder="Precio" pattern="[0-9,]{1,8}" title="Debe ingresar numeros enteros o decimales" />
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtStockAct" CssClass="form-control" placeholder="Stock" pattern="[0-9]+" /> 
+                            <asp:TextBox runat="server" ID="txtStockAct" CssClass="form-control" placeholder="Stock" pattern="[0-9]{1,8}" title="Debe ingresar solo numeros del 0 al 9 " /> 
                         </div>
                         <div class="col">
                             <asp:DropDownList runat="server" ID="cboRubroAct" CssClass="form-control"></asp:DropDownList> 

@@ -71,18 +71,18 @@
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtRazonSocial" CssClass="form-control" placeholder="Razon Social" pattern="[a-zA-Z]"/> 
+                            <asp:TextBox runat="server" ID="txtRazonSocial" CssClass="form-control" placeholder="Razon Social" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 3 caracters y un maximo de 25"/> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" placeholder="Direccion" />
+                            <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" placeholder="Direccion" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 3 caracters y un maximo de 25" />
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtCuit" CssClass="form-control" placeholder="Cuit" /> 
+                            <asp:TextBox runat="server" ID="txtCuit" CssClass="form-control" placeholder="Cuit" pattern="[0-9]{11,11}" title ="Debe ingresar solo numeros del 0 al 9 (para un cuit valido debe ingresar 11 caracteres)"/> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtIngBrutos" CssClass="form-control" placeholder="Ingresos Brutos" pattern="/^\d+(?:\.\d{1,2})?$/"/> 
+                            <asp:TextBox runat="server" ID="txtIngBrutos" CssClass="form-control" placeholder="Ingresos Brutos" pattern="[A-Za-z0-9.]" title="Debe ingresar numeros enteros o decimales"/> 
                         </div>
                     </div>
                     <div class="row mt-2">

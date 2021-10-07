@@ -174,9 +174,7 @@ namespace Confiteria
                     txtApellido.Text = string.Empty;
                     cboTipoDoc.SelectedIndex = 0;
                     txtNumDocumento.Text = string.Empty;
-                    txtEmail.Text = string.Empty;
                     txtTelefono.Text = string.Empty;
-                    txtDireccion.Text = string.Empty;
                     txtComision.Text = string.Empty;
                     //Response.Redirect("Mozos.aspx");
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeSuccess();", true);

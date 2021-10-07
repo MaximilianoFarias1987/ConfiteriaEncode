@@ -20,7 +20,7 @@
 
             <div class="col">
                 <label>Cantidad</label>
-                <asp:TextBox runat="server" ID="txtCantidad" CssClass="form-control" placeholder="Cantidad" pattern="[0-9]+"/>
+                <asp:TextBox runat="server" ID="txtCantidad" CssClass="form-control" placeholder="Cantidad" patpattern="[0-9]{8,8}" title ="Debe ingresar solo numeros del 0 al 9"/>
 
             </div>
         </div>

@@ -16,3 +16,12 @@ C:\GitProject\Confiteria\Confiteria\Reportes\obj\Debug\Reportes.csproj.CoreCompi
 C:\GitProject\Confiteria\Confiteria\Reportes\obj\Debug\Reportes.csproj.CopyComplete
 C:\GitProject\Confiteria\Confiteria\Reportes\obj\Debug\Reportes.dll
 C:\GitProject\Confiteria\Confiteria\Reportes\obj\Debug\Reportes.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Reportes.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Reportes.pdb
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Newtonsoft.Json.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\bin\Debug\Newtonsoft.Json.xml
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.csproj.AssemblyReference.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.csproj.CoreCompileInputs.cache
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.csproj.CopyComplete
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.dll
+C:\GitProyect\ConfiteriaEncode\Confiteria\Reportes\obj\Debug\Reportes.pdb

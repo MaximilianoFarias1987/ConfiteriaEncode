@@ -76,10 +76,10 @@
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Nombre" pattern="[a-zA-Z]"/> 
+                            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" placeholder="Nombre" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 4 caracters y un maximo de 25"/> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Apellido" pattern="[a-zA-Z]" />
+                            <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" placeholder="Apellido" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 4 caracters y un maximo de 25" />
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -87,26 +87,19 @@
                             <asp:DropDownList runat="server" ID="cboTipoDoc" CssClass="form-control"></asp:DropDownList> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtNumDocumento" CssClass="form-control" placeholder="Numero Documento" />
+                            <asp:TextBox runat="server" ID="txtNumDocumento" CssClass="form-control" placeholder="Numero Documento" pattern="[0-9]{8,8}" title ="Debe ingresar solo numeros del 0 al 9 (para un documento valido debe ingresar 8 caracteres)" />
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col">
-                            <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Email" /> 
-                        </div>
-                        <div class="col">
-                            <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" placeholder="Telefono" />
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <asp:TextBox runat="server" ID="txtDireccion" CssClass="form-control" placeholder="Direccion" /> 
-                        </div>
-                        <div class="col">
-                            <asp:TextBox runat="server" ID="txtComision" CssClass="form-control" placeholder="% Comision" pattern="/^\d+(?:\.\d{1,2})?$/"/>
-                        </div>
                         
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" placeholder="Telefono" pattern="[0-9]{10,10}" title="Debe ingresar un telefono valido. Ej: (351)(6589745)"/>
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtComision" CssClass="form-control" placeholder="% Comision" pattern="[A-Za-z0-9.]" title="Debe ingresar numeros enteros o decimales"/>
+                        </div>
                     </div>
+                    
                 </div>
                 <div class="modal-footer">
 
@@ -141,10 +134,10 @@
                     
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtNombreAct" CssClass="form-control" placeholder="Nombre" /> 
+                            <asp:TextBox runat="server" ID="txtNombreAct" CssClass="form-control" placeholder="Nombre" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 4 caracters y un maximo de 25" /> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtApellidoAct" CssClass="form-control" placeholder="Apellido" />
+                            <asp:TextBox runat="server" ID="txtApellidoAct" CssClass="form-control" placeholder="Apellido" pattern="[A-Za-z]{3,25}" title="Debe ingresar solo letras, un minimo de 4 caracters y un maximo de 25"/>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -152,17 +145,17 @@
                             <asp:DropDownList runat="server" ID="cboTipoDocAct" CssClass="form-control"></asp:DropDownList> 
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtDocumentoAct" CssClass="form-control" placeholder="Numero Documento" />
+                            <asp:TextBox runat="server" ID="txtDocumentoAct" CssClass="form-control" placeholder="Numero Documento" pattern="[0-9]{8,8}" title ="Debe ingresar solo numeros del 0 al 9 (para un documento valido debe ingresar 8 caracteres)"/>
                         </div>
                     </div>
                     
                     <div class="row mt-2">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtTelefonoAct" CssClass="form-control" placeholder="Telefono" />
+                            <asp:TextBox runat="server" ID="txtTelefonoAct" CssClass="form-control" placeholder="Telefono" pattern="[0-9]{10,10}" title="Debe ingresar un telefono valido. Ej: (351)(6589745)"/>
                         </div>
                         
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtComisionAct" CssClass="form-control" placeholder="% Comision" pattern="/^\d+(?:\.\d{1,2})?$/" />
+                            <asp:TextBox runat="server" ID="txtComisionAct" CssClass="form-control" placeholder="% Comision" pattern="[A-Za-z0-9.]" title="Debe ingresar numeros enteros o decimales" />
                         </div>
                         
                     </div>
