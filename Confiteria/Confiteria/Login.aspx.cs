@@ -25,7 +25,7 @@ namespace Confiteria
 
             if (usuario != null)
             {
-                //string pass = EncryptKeys.DesencriptarPassword(usuario.Password, "keys");
+                
                 //if (pass == txtPassword.Text)
                 //{
                     Session["Login"] = usuario;

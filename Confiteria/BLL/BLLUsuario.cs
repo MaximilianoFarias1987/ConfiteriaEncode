@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Entidades;
+using Entidades.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +41,7 @@ namespace BLL
 
 
         //OBTENER USAURIOS
-        public static List<Usuario> ObtenerUsuarios()
+        public static List<UsuariosDTO> ObtenerUsuarios()
         {
             return DALUsuario.ObtenerUsuarios();
         }

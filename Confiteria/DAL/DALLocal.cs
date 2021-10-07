@@ -184,29 +184,31 @@ namespace DAL
 
         //OBTENER Articulo ID
 
-        public static Local ObtenerLocalID(Local l)
+        public static int ObtenerLocalID()
         {
 
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            Local obj = null;
             try
             {
+                int idLocal = 0;
                 string nombreSP = "sp_ObtenerLocalID";
                 con.ConnectionString = Conexion.ObtenerConexion();
                 con.Open();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = nombreSP;
-                cmd.Parameters.AddWithValue("@idLocal", l.IdLocal);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    obj = CrearObjeto(dr);
+                    if (dr["idLocal"].ToString() != null)
+                    {
+                        idLocal = (int)dr["idLocal"];
+                    }
                 }
                 con.Close();
-                return obj;
+                return idLocal;
 
             }
             catch (Exception)
@@ -219,6 +221,10 @@ namespace DAL
                 con.Close();
             }
         }
+
+
+
+       
 
 
 

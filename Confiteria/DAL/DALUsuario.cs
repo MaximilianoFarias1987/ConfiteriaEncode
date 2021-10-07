@@ -1,5 +1,6 @@
 ﻿using DAL.ConexionDB;
 using Entidades;
+using Entidades.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -156,7 +157,7 @@ namespace DAL
         public static Usuario CrearObjeto(SqlDataReader dr)
         {
             var u = new Usuario();
-            if (dr["idUsuario"].ToString() != null )
+            if (dr["idUsuario"].ToString() != null)
             {
                 u.Id = (int)dr["idUsuario"];
             }
@@ -187,6 +188,46 @@ namespace DAL
             if (dr["idRol"].ToString() != null)
             {
                 u.IdRol = (int)dr["idRol"];
+            }
+
+            return u;
+        }
+
+
+        public static UsuariosDTO CrearObjetoDTO(SqlDataReader dr)
+        {
+            var u = new UsuariosDTO();
+            if (dr["idUsuario"].ToString() != null)
+            {
+                u.IdUsuario = (int)dr["idUsuario"];
+            }
+            if (dr["Nombre"].ToString() != null)
+            {
+                u.Nombre = dr["Nombre"].ToString();
+            }
+            if (dr["Apellido"].ToString() != null)
+            {
+                u.Apellido = dr["Apellido"].ToString();
+            }
+            if (dr["TipoDocumento"].ToString() != null)
+            {
+                u.TipoDoc = dr["TipoDocumento"].ToString();
+            }
+            if (dr["Documento"].ToString() != null)
+            {
+                u.Documento = dr["Documento"].ToString();
+            }
+            if (dr["NombreUsuario"].ToString() != null)
+            {
+                u.NombreUsuario = dr["NombreUsuario"].ToString();
+            }
+            if (dr["contrasenia"].ToString() != null)
+            {
+                u.Password = dr["contrasenia"].ToString();
+            }
+            if (dr["Rol"].ToString() != null)
+            {
+                u.Rol = dr["Rol"].ToString();
             }
 
             return u;
@@ -254,16 +295,55 @@ namespace DAL
 
 
         //OBTENER USAURIOS
-        public static List<Usuario> ObtenerUsuarios()
+        //public static List<Usuario> ObtenerUsuarios()
+        //{
+
+        //    SqlConnection con = new SqlConnection();
+        //    SqlCommand cmd = new SqlCommand();
+        //    List<Usuario> lst = new List<Usuario>();
+        //    Usuario u = null;
+        //    try
+        //    {
+        //        string nombreSP = "sp_ObtenerUsuarios";
+        //        con.ConnectionString = Conexion.ObtenerConexion();
+        //        con.Open();
+        //        cmd.Connection = con;
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = nombreSP;
+        //        SqlDataReader dr = cmd.ExecuteReader();
+        //        lst.Clear();
+
+        //        while (dr.Read())
+        //        {
+        //            u = CrearObjeto(dr);
+        //            lst.Add(u);
+        //        }
+        //        con.Close();
+        //        return lst;
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //Conexion.BeginTransaction();
+        //        throw new Exception("Ha ocurrido un error");
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
+        //}
+
+
+        public static List<UsuariosDTO> ObtenerUsuarios()
         {
 
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
-            List<Usuario> lst = new List<Usuario>();
-            Usuario u = null;
+            List<UsuariosDTO> lst = new List<UsuariosDTO>();
+            UsuariosDTO u = null;
             try
             {
-                string nombreSP = "sp_ObtenerUsuarios";
+                string nombreSP = "sp_ObtenerUsuarios2";
                 con.ConnectionString = Conexion.ObtenerConexion();
                 con.Open();
                 cmd.Connection = con;
@@ -274,12 +354,12 @@ namespace DAL
 
                 while (dr.Read())
                 {
-                    u = CrearObjeto(dr);
+                    u = CrearObjetoDTO(dr);
                     lst.Add(u);
                 }
                 con.Close();
                 return lst;
-                
+
             }
             catch (Exception)
             {
@@ -295,7 +375,7 @@ namespace DAL
 
 
 
-        
+
 
 
         //OBTENER TIPOS DE DOCUMENTOS PARA CARGAR COMBO
@@ -395,12 +475,13 @@ namespace DAL
 
         public static Usuario UsuarioSesion(string usuario, string pass)
         {
+            pass = EncryptKeys.EncriptarPassword(pass, "keys");
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
             Usuario u = null;
             try
             {
-                string query = string.Format("select * from Usuarios where nombreUsuario = '{0}' and contrasenia = '{1}'", usuario,pass);
+                string query = string.Format("select * from Usuarios where nombreUsuario = '{0}' and contrasenia = '{1}'", usuario, pass);
                 con.ConnectionString = Conexion.ObtenerConexion();
                 cmd.Connection = con;
                 cmd.CommandText = query;

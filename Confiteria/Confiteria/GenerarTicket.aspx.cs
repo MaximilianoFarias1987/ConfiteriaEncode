@@ -22,6 +22,7 @@ namespace Confiteria
                 CargarComboArticulo();
                 CargarComboMozo();
                 CargarComboFormaPago();
+                
             }
         }
 
@@ -238,7 +239,9 @@ namespace Confiteria
         {
             if (ValidacionTicket())
             {
-                if (CrearTicket(1, 3, Convert.ToInt32(cboMozo.Text), Convert.ToInt32(cboFormaPago.Text)))
+                Usuario usuario = (Usuario)Session["Login"];
+                int idLocal = BLLLocal.ObtenerLocalID();
+                if (CrearTicket(idLocal, usuario.Id, Convert.ToInt32(cboMozo.Text), Convert.ToInt32(cboFormaPago.Text)))
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "MyFunction", "MensajeTicketSuccess();", true);
                 }

@@ -1,5 +1,6 @@
 ﻿using BLL;
 using Entidades;
+using Entidades.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -41,6 +42,7 @@ namespace Confiteria
             cboTipoDocAct.DataTextField = table.Columns[1].ColumnName;
             cboTipoDocAct.DataValueField = table.Columns[0].ColumnName;
             cboTipoDocAct.DataBind();
+            cboTipoDocAct.Items.Insert(0, new ListItem("Seleccione un tipo de documento..."));
         }
 
         public void CargarComboRoles()
@@ -60,14 +62,15 @@ namespace Confiteria
             cboRolAct.DataTextField = table.Columns[1].ColumnName;
             cboRolAct.DataValueField = table.Columns[0].ColumnName;
             cboRolAct.DataBind();
+            cboRolAct.Items.Insert(0, new ListItem("Seleccione un Rol de Usuario..."));
         }
 
         //WEBMETHOD
 
         [WebMethod]
-        public static List<Usuario> listaUsuarios()
+        public static List<UsuariosDTO> listaUsuarios()
         {
-            List<Usuario> lst = BLLUsuario.ObtenerUsuarios();
+            List<UsuariosDTO> lst = BLLUsuario.ObtenerUsuarios();
 
             return lst;
         }
@@ -162,31 +165,37 @@ namespace Confiteria
             {
                 return false;
             }
-            if (txtApellidoAct.Text == string.Empty)
+            else if(txtApellidoAct.Text == string.Empty)
+            {
+                return false;
+            }else if (cboTipoDocAct.SelectedIndex == 0)
+            {
+                return false;
+            }else if (txtDocAct.Text == string.Empty)
+            {
+                return false;
+            }else if (txtNombreUsuarioAct.Text == string.Empty)
+            {
+                return false;
+            } else if (txtPasswordAct.Text == string.Empty)
+            {
+                return false;
+            }else if (cboRolAct.SelectedIndex == 0)
             {
                 return false;
             }
-            if (cboTipoDocAct.SelectedIndex == 0)
+            else
             {
-                return false;
+                return true;
             }
-            if (txtDocAct.Text == string.Empty)
-            {
-                return false;
-            }
-            if (txtNombreUsuarioAct.Text == string.Empty)
-            {
-                return false;
-            }
-            if (txtPasswordAct.Text == string.Empty)
-            {
-                return false;
-            }
-            if (cboRolAct.SelectedIndex == 0)
-            {
-                return false;
-            }
-            return true;
+
+
+
+
+
+
+
+            
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)

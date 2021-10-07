@@ -16,6 +16,13 @@
        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+      <style>
+        input:invalid{
+            border-color:red;
+        }
+        
+    </style>
+
   </head>
   <body>
       

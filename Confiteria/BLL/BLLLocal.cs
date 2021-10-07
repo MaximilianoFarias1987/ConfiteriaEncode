@@ -34,9 +34,9 @@ namespace BLL
 
         //OBTENER Articulo ID
 
-        public static Local ObtenerLocalID(Local l)
+        public static int ObtenerLocalID()
         {
-            return DALLocal.ObtenerLocalID(l);
+            return DALLocal.ObtenerLocalID();
         }
 
 

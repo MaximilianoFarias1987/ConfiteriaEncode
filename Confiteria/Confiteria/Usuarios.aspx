@@ -28,10 +28,10 @@
                                 <th>Apellido</th>
                                 <th>Tipo Documento</th>
                                 <th>Documento</th>
-                                <th>Usuario</th>
-                                <th>Contraseña</th>
+                                <th>Usuario</th>                            
                                 <th>Rol</th>
-                                <th>Acciones</th>
+                                <th>Contraseña</th>
+                                <th >Acciones</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -42,8 +42,8 @@
                                 <th>Tipo Documento</th>
                                 <th>Documento</th>
                                 <th>Usuario</th>
-                                <th>Contraseña</th>
                                 <th>Rol</th>
+                                <th>Contraseña</th>
                                 <th>Acciones</th>
                             </tr>
                         </tfoot>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="modal-footer">
 
-                     <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnRegistrar_Click" OnClientClick="clearTabla(); sendDataAjax();" />
+                     <asp:Button ID="btnRegistrar" Text="Registrar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnRegistrar_Click" />
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalRegistrar()">Cerrar</button>
                 </div>
@@ -172,7 +172,7 @@
                 </div>
                 <div class="modal-footer">
 
-                     <asp:Button ID="btnActualizar" Text="Actualizar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnActualizar_Click" OnClientClick="clearTabla(); sendDataAjax();" />
+                     <asp:Button ID="btnActualizar" Text="Actualizar" CssClass="btn btn-primary" data-bs-dismiss="modal" runat="server" OnClick="btnActualizar_Click" />
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cerrarModalActualizar()">Cerrar</button>
                 </div>
@@ -219,7 +219,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script src="js/Usuario.js"></script>
+    <%--<script src="js/Usuario.js"></script>--%>
 
 
 
@@ -304,19 +304,38 @@
             tabla.fnClearTable();
         }
 
+        //function addRowDT(data) {
+        //    tabla = $("#tblUsuarios").dataTable();
+        //    //tabla.fnClearTable();
+        //    for (var i = 0; i <= data.length; i++) {
+        //        tabla.fnAddData([
+        //            data[i].Id,
+        //            data[i].Nombre,
+        //            data[i].Apellido,
+        //            data[i].IdTipoDoc,
+        //            data[i].NumeroDoc,
+        //            data[i].NombreUsuario,
+        //            data[i].Password,
+        //            data[i].IdRol,
+        //            '<button type="button" value="Actualizar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalActualizar()" id="btnAbrirModalEdit"><i class="fa fa-pencil" aria-hidden="true"></i></button><button type="button" id="eliminar" value="Eliminar" class="btn btn-danger ml-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalEliminar()"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+
+        //        ])
+        //    }
+        //}
+
         function addRowDT(data) {
             tabla = $("#tblUsuarios").dataTable();
             //tabla.fnClearTable();
             for (var i = 0; i <= data.length; i++) {
                 tabla.fnAddData([
-                    data[i].Id,
+                    data[i].IdUsuario,
                     data[i].Nombre,
                     data[i].Apellido,
-                    data[i].IdTipoDoc,
-                    data[i].NumeroDoc,
+                    data[i].TipoDoc,
+                    data[i].Documento,
                     data[i].NombreUsuario,
+                    data[i].Rol,
                     data[i].Password,
-                    data[i].IdRol,
                     '<button type="button" value="Actualizar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalActualizar()" id="btnAbrirModalEdit"><i class="fa fa-pencil" aria-hidden="true"></i></button><button type="button" id="eliminar" value="Eliminar" class="btn btn-danger ml-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" onclick="abrirModalEliminar()"><i class="fa fa-trash" aria-hidden="true"></i></button>'
 
                 ])
@@ -350,17 +369,27 @@
         });
 
         //CAGAR DATOS EN EL MODAL ACTUALIZAR
-        function fillModalData() {
+        <%--function fillModalData() {
             $("#<%=HdIDUsuario.ClientID%>").val(data[0]);
             $("#<%=txtNombreActualizar.ClientID%>").val(data[1]);
             $("#<%=txtApellidoAct.ClientID%>").val(data[2]);
             $("#<%=cboTipoDocAct.ClientID%>").val(data[3]);
             $("#<%=txtDocAct.ClientID%>").val(data[4]);
-            $("#<%=txtNombreActualizar.ClientID%>").val(data[5]);
+            $("#<%=txtNombreUsuarioAct.ClientID%>").val(data[5]);
             $("#<%=txtPasswordAct.ClientID%>").val(data[6]);
             $("#<%=cboRolAct.ClientID%>").val(data[7]);
 
-        }
+        }--%>
+
+        function fillModalData() {
+            $("#<%=HdIDUsuario.ClientID%>").val(data[0]);
+             $("#<%=txtNombreActualizar.ClientID%>").val(data[1]);
+             $("#<%=txtApellidoAct.ClientID%>").val(data[2]);
+           $("#<%=txtDocAct.ClientID%>").val(data[4]);
+            $("#<%=txtNombreUsuarioAct.ClientID%>").val(data[5]);
+            $("#<%=txtPasswordAct.ClientID%>").val(data[6]);
+
+         }
 
         $(document).on('click', '#eliminar', function (e) {
             e.preventDefault();

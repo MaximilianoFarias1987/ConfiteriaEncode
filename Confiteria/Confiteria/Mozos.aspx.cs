@@ -40,6 +40,7 @@ namespace Confiteria
             cboTipoDocAct.DataTextField = table.Columns[1].ColumnName;
             cboTipoDocAct.DataValueField = table.Columns[0].ColumnName;
             cboTipoDocAct.DataBind();
+            cboTipoDocAct.Items.Insert(0, new ListItem("Seleccione un tipo de documento..."));
         }
 
 
